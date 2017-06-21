@@ -54,5 +54,13 @@ namespace Prestamos
         {
 
         }
+ 
+
+        private void eliminarPrestamosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Proceso.frmEliminarPrestamos frm = new Proceso.frmEliminarPrestamos();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

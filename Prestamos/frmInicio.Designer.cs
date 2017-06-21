@@ -37,6 +37,9 @@
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoDiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarPrestamosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarPagosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +48,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.inicioToolStripMenuItem,
             this.procesoToolStripMenuItem,
-            this.consultasToolStripMenuItem});
+            this.consultasToolStripMenuItem,
+            this.administraciónToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1128, 24);
@@ -80,7 +84,7 @@
             // 
             this.crearPrestamoToolStripMenuItem1.Name = "crearPrestamoToolStripMenuItem1";
             this.crearPrestamoToolStripMenuItem1.Size = new System.Drawing.Size(155, 22);
-            this.crearPrestamoToolStripMenuItem1.Text = "Crear Prestamo";
+            this.crearPrestamoToolStripMenuItem1.Text = "Crear prestamo";
             this.crearPrestamoToolStripMenuItem1.Click += new System.EventHandler(this.crearPrestamoToolStripMenuItem1_Click);
             // 
             // registrarPagosToolStripMenuItem
@@ -112,6 +116,28 @@
             this.movimientoDiarioToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.movimientoDiarioToolStripMenuItem.Text = "Movimiento diario";
             this.movimientoDiarioToolStripMenuItem.Click += new System.EventHandler(this.movimientoDiarioToolStripMenuItem_Click);
+            // 
+            // administraciónToolStripMenuItem
+            // 
+            this.administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eliminarPrestamosToolStripMenuItem1,
+            this.eliminarPagosToolStripMenuItem1});
+            this.administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
+            this.administraciónToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
+            this.administraciónToolStripMenuItem.Text = "Administración";
+            // 
+            // eliminarPrestamosToolStripMenuItem1
+            // 
+            this.eliminarPrestamosToolStripMenuItem1.Name = "eliminarPrestamosToolStripMenuItem1";
+            this.eliminarPrestamosToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.eliminarPrestamosToolStripMenuItem1.Text = "Eliminar prestamos";
+            this.eliminarPrestamosToolStripMenuItem1.Click += new System.EventHandler(this.eliminarPrestamosToolStripMenuItem1_Click);
+            // 
+            // eliminarPagosToolStripMenuItem1
+            // 
+            this.eliminarPagosToolStripMenuItem1.Name = "eliminarPagosToolStripMenuItem1";
+            this.eliminarPagosToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
+            this.eliminarPagosToolStripMenuItem1.Text = "Eliminar pagos";
             // 
             // frmInicio
             // 
@@ -146,5 +172,8 @@
         private System.Windows.Forms.ToolStripMenuItem consultasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPagosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem movimientoDiarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarPrestamosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem eliminarPagosToolStripMenuItem1;
     }
 }

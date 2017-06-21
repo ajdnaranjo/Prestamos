@@ -61,6 +61,8 @@ namespace Prestamos.Proceso
                 var prestamop = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
                 if (prestamop.Saldo <= 0) btnGuardar.Enabled = false;
 
+                LimpiarFormulario();
+
             }
             catch (Exception ex)
             {
@@ -109,6 +111,7 @@ namespace Prestamos.Proceso
             txtValor.Text = string.Empty;
             txtAbono.Text = string.Empty;
             txtSaldo.Text = string.Empty;
+            txtVlrCuota.Text = string.Empty;
         }
 
         private void txtAbono_Leave(object sender, EventArgs e)

@@ -110,5 +110,36 @@ namespace Prestamos.Repositorios
             totalPrestamos = query.Sum(x => x.ValorPrestamo);
             return totalPrestamos;
         }
+
+        public void EliminarPrestamo(int noPrestamo)
+        {
+            using (var context = new PrestamosEntities())
+            {
+
+                List<PrestamoPago> pPagos = context.PrestamoPago.Where(x => x.NoPrestamo == noPrestamo).ToList();
+
+                foreach (PrestamoPago pp in pPagos)
+                {
+                    Pago pago = context.Pago.Where(x => x.PrestamoPagoID == pp.PrestamoPagoID).SingleOrDefault();
+
+                    if (pago != null)
+                    {
+                        context.Pago.Remove(pago);
+                        context.SaveChanges();
+                    }
+
+                    context.PrestamoPago.Remove(pp);
+                    context.SaveChanges();
+                }
+
+                Prestamo prestamo = context.Prestamo.Where(x => x.NoPrestamo == noPrestamo).FirstOrDefault();
+
+                context.Prestamo.Remove(prestamo);
+                context.SaveChanges();
+
+
+            }
+
+        }
     }
 }

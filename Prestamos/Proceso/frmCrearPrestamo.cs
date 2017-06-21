@@ -99,19 +99,7 @@ namespace Prestamos.Proceso
                 cliente = repo.ClienteXDocumento(int.Parse(txtDocumento.Text.Trim()));
                 if (cliente != null && cliente.Estado == true)
                     txtNombre.Text = cliente.Nombre;
-                else
-                {/*
-                    DialogResult dialogResult = MessageBox.Show("El cliente no existe, desea crearlo?", "Prestamos",  MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {                        
-                       Maestros.frmClientes frm = new Maestros.frmClientes();
-                        frm.MdiParent = frmInicio.ActiveForm;
-                        frm._documento = int.Parse(txtDocumento.Text.Trim());
-                        frm.Show();
-                        return;
-                    }
-                   */ 
-                }
+              
             }
         }
 
