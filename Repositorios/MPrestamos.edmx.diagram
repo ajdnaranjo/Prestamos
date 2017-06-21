@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c47a88cf387e44b78988d166cb307570" Name="Diagrama1" ZoomLevel="86">
+        <EntityTypeShape EntityType="PrestamosModel.Cliente" Width="1.5" PointX="4.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrestamosModel.FormasPago" Width="1.5" PointX="7.625" PointY="7.75" />
+        <EntityTypeShape EntityType="PrestamosModel.Pago" Width="1.5" PointX="10.691108140484946" PointY="29.913006572943651" />
+        <EntityTypeShape EntityType="PrestamosModel.PrestamoPago" Width="1.5" PointX="4.856566481691118" PointY="14.933364457885439" />
+        <AssociationConnector Association="PrestamosModel.FK_Pago_PrestamoPago" />
+        <EntityTypeShape EntityType="PrestamosModel.Prestamo" Width="1.5" PointX="7.5" PointY="10.625" />
+        <AssociationConnector Association="PrestamosModel.FK_Prestamos_Cliente" />
+        <AssociationConnector Association="PrestamosModel.FK_Prestamo_FormasPago" />
+        <AssociationConnector Association="PrestamosModel.FK_PrestamoPago_Prestamo" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

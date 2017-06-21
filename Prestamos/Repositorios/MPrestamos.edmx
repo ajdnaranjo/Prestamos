@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="PrestamosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Documento" />
+          </Key>
+          <Property Name="Documento" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Celular" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormasPago">
+          <Key>
+            <PropertyRef Name="FormaPagoID" />
+          </Key>
+          <Property Name="FormaPagoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="IDPago" />
+          </Key>
+          <Property Name="IDPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrestamoPagoID" Type="int" Nullable="false" />
+          <Property Name="Cuota" Type="int" />
+          <Property Name="ValorPago" Type="money" Nullable="false" />
+          <Property Name="Saldo" Type="money" Nullable="false" />
+          <Property Name="FechaPago" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="NoPrestamo" />
+          </Key>
+          <Property Name="NoPrestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Documento" Type="int" Nullable="false" />
+          <Property Name="FechaPrestamo" Type="datetime" Nullable="false" />
+          <Property Name="ValorPrestamo" Type="money" Nullable="false" />
+          <Property Name="NoCuotas" Type="int" Nullable="false" />
+          <Property Name="FormaPagoID" Type="int" Nullable="false" />
+          <Property Name="Intereses" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ValorCuota" Type="money" Nullable="false" />
+          <Property Name="Ganancias" Type="money" Nullable="false" />
+          <Property Name="Saldo" Type="money" Nullable="false" />
+          <Property Name="Total" Type="money" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrestamoPago">
+          <Key>
+            <PropertyRef Name="PrestamoPagoID" />
+          </Key>
+          <Property Name="PrestamoPagoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoPrestamo" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Pago_PrestamoPago">
+          <End Role="PrestamoPago" Type="Self.PrestamoPago" Multiplicity="1" />
+          <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrestamoPago">
+              <PropertyRef Name="PrestamoPagoID" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="PrestamoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prestamo_FormasPago">
+          <End Role="FormasPago" Type="Self.FormasPago" Multiplicity="1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormasPago">
+              <PropertyRef Name="FormaPagoID" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="FormaPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrestamoPago_Prestamo">
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="1" />
+          <End Role="PrestamoPago" Type="Self.PrestamoPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prestamo">
+              <PropertyRef Name="NoPrestamo" />
+            </Principal>
+            <Dependent Role="PrestamoPago">
+              <PropertyRef Name="NoPrestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prestamos_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Prestamo" Type="Self.Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Documento" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="Documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrestamosModelStoreContainer">
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormasPago" EntityType="Self.FormasPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prestamo" EntityType="Self.Prestamo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrestamoPago" EntityType="Self.PrestamoPago" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Pago_PrestamoPago" Association="Self.FK_Pago_PrestamoPago">
+            <End Role="PrestamoPago" EntitySet="PrestamoPago" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prestamo_FormasPago" Association="Self.FK_Prestamo_FormasPago">
+            <End Role="FormasPago" EntitySet="FormasPago" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrestamoPago_Prestamo" Association="Self.FK_PrestamoPago_Prestamo">
+            <End Role="Prestamo" EntitySet="Prestamo" />
+            <End Role="PrestamoPago" EntitySet="PrestamoPago" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prestamos_Cliente" Association="Self.FK_Prestamos_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrestamosModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="PrestamosEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Cliente" EntityType="PrestamosModel.Cliente" />
+          <EntitySet Name="FormasPago" EntityType="PrestamosModel.FormasPago" />
+          <EntitySet Name="Pago" EntityType="PrestamosModel.Pago" />
+          <EntitySet Name="PrestamoPago" EntityType="PrestamosModel.PrestamoPago" />
+          <AssociationSet Name="FK_Pago_PrestamoPago" Association="PrestamosModel.FK_Pago_PrestamoPago">
+            <End Role="PrestamoPago" EntitySet="PrestamoPago" />
+            <End Role="Pago" EntitySet="Pago" />
+          </AssociationSet>
+          <EntitySet Name="Prestamo" EntityType="PrestamosModel.Prestamo" />
+          <AssociationSet Name="FK_Prestamos_Cliente" Association="PrestamosModel.FK_Prestamos_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prestamo_FormasPago" Association="PrestamosModel.FK_Prestamo_FormasPago">
+            <End Role="FormasPago" EntitySet="FormasPago" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrestamoPago_Prestamo" Association="PrestamosModel.FK_PrestamoPago_Prestamo">
+            <End Role="Prestamo" EntitySet="Prestamo" />
+            <End Role="PrestamoPago" EntitySet="PrestamoPago" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Documento" />
+          </Key>
+          <Property Name="Documento" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Celular" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+          <NavigationProperty Name="Prestamo" Relationship="PrestamosModel.FK_Prestamos_Cliente" FromRole="Cliente" ToRole="Prestamo" />
+        </EntityType>
+        <EntityType Name="FormasPago">
+          <Key>
+            <PropertyRef Name="FormaPagoID" />
+          </Key>
+          <Property Type="Int32" Name="FormaPagoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Prestamo" Relationship="PrestamosModel.FK_Prestamo_FormasPago" FromRole="FormasPago" ToRole="Prestamo" />
+        </EntityType>
+        <EntityType Name="Pago">
+          <Key>
+            <PropertyRef Name="IDPago" />
+          </Key>
+          <Property Type="Int32" Name="IDPago" Nullable="false" />
+          <Property Type="Int32" Name="PrestamoPagoID" Nullable="false" />
+          <Property Type="Decimal" Name="ValorPago" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="PrestamoPago" Relationship="PrestamosModel.FK_Pago_PrestamoPago" FromRole="Pago" ToRole="PrestamoPago" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" />
+          <Property Name="Cuota" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PrestamoPago">
+          <Key>
+            <PropertyRef Name="PrestamoPagoID" />
+          </Key>
+          <Property Type="Int32" Name="PrestamoPagoID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="NoPrestamo" Nullable="false" />
+          <NavigationProperty Name="Pago" Relationship="PrestamosModel.FK_Pago_PrestamoPago" FromRole="PrestamoPago" ToRole="Pago" />
+          <NavigationProperty Name="Prestamo" Relationship="PrestamosModel.FK_PrestamoPago_Prestamo" FromRole="PrestamoPago" ToRole="Prestamo" />
+        </EntityType>
+        <Association Name="FK_Pago_PrestamoPago">
+          <End Type="PrestamosModel.PrestamoPago" Role="PrestamoPago" Multiplicity="1" />
+          <End Type="PrestamosModel.Pago" Role="Pago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PrestamoPago">
+              <PropertyRef Name="PrestamoPagoID" />
+            </Principal>
+            <Dependent Role="Pago">
+              <PropertyRef Name="PrestamoPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Prestamo">
+          <Key>
+            <PropertyRef Name="NoPrestamo" />
+          </Key>
+          <Property Type="Int32" Name="NoPrestamo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Documento" Nullable="false" />
+          <Property Type="DateTime" Name="FechaPrestamo" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="ValorPrestamo" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Int32" Name="NoCuotas" Nullable="false" />
+          <Property Type="Int32" Name="FormaPagoID" Nullable="false" />
+          <Property Type="Decimal" Name="Intereses" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="ValorCuota" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Ganancias" Nullable="false" Precision="19" Scale="4" />
+          <Property Type="Decimal" Name="Saldo" Precision="19" Scale="4" Nullable="false" />
+          <Property Type="Decimal" Name="Total" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Cliente" Relationship="PrestamosModel.FK_Prestamos_Cliente" FromRole="Prestamo" ToRole="Cliente" />
+          <NavigationProperty Name="FormasPago" Relationship="PrestamosModel.FK_Prestamo_FormasPago" FromRole="Prestamo" ToRole="FormasPago" />
+          <NavigationProperty Name="PrestamoPago" Relationship="PrestamosModel.FK_PrestamoPago_Prestamo" FromRole="Prestamo" ToRole="PrestamoPago" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Prestamos_Cliente">
+          <End Type="PrestamosModel.Cliente" Role="Cliente" Multiplicity="1" />
+          <End Type="PrestamosModel.Prestamo" Role="Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Documento" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="Documento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prestamo_FormasPago">
+          <End Type="PrestamosModel.FormasPago" Role="FormasPago" Multiplicity="1" />
+          <End Type="PrestamosModel.Prestamo" Role="Prestamo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormasPago">
+              <PropertyRef Name="FormaPagoID" />
+            </Principal>
+            <Dependent Role="Prestamo">
+              <PropertyRef Name="FormaPagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PrestamoPago_Prestamo">
+          <End Type="PrestamosModel.Prestamo" Role="Prestamo" Multiplicity="1" />
+          <End Type="PrestamosModel.PrestamoPago" Role="PrestamoPago" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prestamo">
+              <PropertyRef Name="NoPrestamo" />
+            </Principal>
+            <Dependent Role="PrestamoPago">
+              <PropertyRef Name="NoPrestamo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PrestamosModelStoreContainer" CdmEntityContainer="PrestamosEntities">
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="PrestamosModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormasPago">
+            <EntityTypeMapping TypeName="PrestamosModel.FormasPago">
+              <MappingFragment StoreEntitySet="FormasPago">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FormaPagoID" ColumnName="FormaPagoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pago">
+            <EntityTypeMapping TypeName="PrestamosModel.Pago">
+              <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="Cuota" ColumnName="Cuota" />
+                <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="ValorPago" ColumnName="ValorPago" />
+                <ScalarProperty Name="PrestamoPagoID" ColumnName="PrestamoPagoID" />
+                <ScalarProperty Name="IDPago" ColumnName="IDPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrestamoPago">
+            <EntityTypeMapping TypeName="PrestamosModel.PrestamoPago">
+              <MappingFragment StoreEntitySet="PrestamoPago">
+                <ScalarProperty Name="NoPrestamo" ColumnName="NoPrestamo" />
+                <ScalarProperty Name="PrestamoPagoID" ColumnName="PrestamoPagoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prestamo">
+            <EntityTypeMapping TypeName="PrestamosModel.Prestamo">
+              <MappingFragment StoreEntitySet="Prestamo">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Saldo" ColumnName="Saldo" />
+                <ScalarProperty Name="Ganancias" ColumnName="Ganancias" />
+                <ScalarProperty Name="ValorCuota" ColumnName="ValorCuota" />
+                <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+                <ScalarProperty Name="FormaPagoID" ColumnName="FormaPagoID" />
+                <ScalarProperty Name="NoCuotas" ColumnName="NoCuotas" />
+                <ScalarProperty Name="ValorPrestamo" ColumnName="ValorPrestamo" />
+                <ScalarProperty Name="FechaPrestamo" ColumnName="FechaPrestamo" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="NoPrestamo" ColumnName="NoPrestamo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
