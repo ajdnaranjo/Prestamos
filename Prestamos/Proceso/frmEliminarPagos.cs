@@ -84,13 +84,16 @@ namespace Prestamos.Proceso
         }
 
         private void dgvPagos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {            
+        {     
             DataGridViewRow row = dgvPagos.CurrentRow;           
             var repo = new RepositorioPagos();
+            var repoPrestamo = new RepositorioCrearPrestamo();
             int noPrestamo = int.Parse(cbNoPrestamo.SelectedValue.ToString());
             int noCouta = int.Parse(row.Cells[0].Value.ToString());
-
+            var prestamo = repoPrestamo.GetPrestamosXID(noPrestamo);
             var cuota = repo.GetCuota(noCouta);
+
+            decimal saldo = prestamo.Saldo + cuota.ValorPago;
 
             var closingPending = false;
 
@@ -109,12 +112,13 @@ namespace Prestamos.Proceso
                     try
                     {
                         repo.EliminarPago(noCouta);
+                        repoPrestamo.RecalcularSaldo(noPrestamo, saldo);
                         limpiarFormulario();
 
                         string mensaje = string.Format("La cuota No. {0} por valor de $ {1} fué eliminada correctamente", cuota.Cuota, cuota.ValorPago.ToString("N"));
                         MessageBox.Show(mensaje);
 
-                        llenarGrid(noPrestamo);
+                        dgvPagos.DataSource = null;
                     }
                     catch (Exception ex)
                     {

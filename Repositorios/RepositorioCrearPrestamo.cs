@@ -141,5 +141,41 @@ namespace Prestamos.Repositorios
             }
 
         }
+
+
+        public void RecalcularSaldo(int noPrestamo, decimal valor)
+        {
+            using (var context = new PrestamosEntities())
+            {
+               
+                Prestamo p = context.Prestamo.FirstOrDefault(cl => cl.NoPrestamo == noPrestamo);
+                decimal sumaSaldos = p.Total;
+                List<Pago> pagos = (from pa in context.Pago
+                             join pp in context.PrestamoPago on pa.PrestamoPagoID equals pp.PrestamoPagoID
+                             where pp.NoPrestamo == p.NoPrestamo
+                             orderby  pa.Cuota ascending
+                             select pa).ToList();
+
+                foreach (Pago r in pagos)
+                {
+                    Pago pago = context.Pago.FirstOrDefault(x => x.IDPago == r.IDPago);
+
+                    sumaSaldos = sumaSaldos - pago.ValorPago;
+                    pago.Saldo = sumaSaldos;
+
+                    context.SaveChanges();
+
+                }
+
+
+                p.Saldo = valor;
+
+                context.SaveChanges();
+
+
+
+            }
+
+        }
     }
 }

@@ -48,17 +48,21 @@ namespace Prestamos.Repositorios
 
         private int NumeroCuotaXNoPrestamo(int NoPrestamo)
         {
-            int query;
+            int? query ;
+            int id = 0;
             using (var context = new PrestamosEntities())
             {
                 query = (from p in context.Pago
                          join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
                          where pp.NoPrestamo == NoPrestamo                         
-                         select p).Count();
+                         orderby p.Cuota descending
+                         select p.Cuota).FirstOrDefault();
             }
-            
 
-            return query + 1;
+            if (query == null) id = 1;
+            else  id = int.Parse(query.ToString()) + 1;
+
+            return id;
         }
 
         public List<Pago> GetPagosXPrestamoID(int prestamoID)
@@ -118,8 +122,9 @@ namespace Prestamos.Repositorios
             {
 
                 Pago pago = context.Pago.Where(x => x.IDPago == idPago).FirstOrDefault();
-
+                PrestamoPago prestamoPago = context.PrestamoPago.Where(x => x.PrestamoPagoID == pago.PrestamoPagoID).FirstOrDefault();
                 context.Pago.Remove(pago);
+                context.PrestamoPago.Remove(prestamoPago);
                 context.SaveChanges();
 
             }
