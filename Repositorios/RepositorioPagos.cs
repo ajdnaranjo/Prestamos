@@ -111,5 +111,33 @@ namespace Prestamos.Repositorios
             return query.Count();
 
         }
+
+        public void EliminarPago(int idPago)
+        {
+            using (var context = new PrestamosEntities())
+            {
+
+                Pago pago = context.Pago.Where(x => x.IDPago == idPago).FirstOrDefault();
+
+                context.Pago.Remove(pago);
+                context.SaveChanges();
+
+            }
+
+        }
+
+        public Pago GetCuota(int idpago)
+        {
+            var query = new Pago();
+
+            using (var context = new PrestamosEntities())
+            {
+                query = (from p in context.Pago
+                         where p.IDPago == idpago                         
+                         select p).FirstOrDefault();
+            }
+
+            return query;
+        }
     }
 }

@@ -138,6 +138,7 @@
             this.eliminarPagosToolStripMenuItem1.Name = "eliminarPagosToolStripMenuItem1";
             this.eliminarPagosToolStripMenuItem1.Size = new System.Drawing.Size(175, 22);
             this.eliminarPagosToolStripMenuItem1.Text = "Eliminar pagos";
+            this.eliminarPagosToolStripMenuItem1.Click += new System.EventHandler(this.eliminarPagosToolStripMenuItem1_Click);
             // 
             // frmInicio
             // 

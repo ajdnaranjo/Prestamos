@@ -76,6 +76,12 @@
     <Compile Include="Consultas\frmConsultaPagos.Designer.cs">
       <DependentUpon>frmConsultaPagos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Proceso\frmEliminarPagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Proceso\frmEliminarPagos.Designer.cs">
+      <DependentUpon>frmEliminarPagos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Proceso\frmEliminarPrestamos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmConsultaPagos.resx">
       <DependentUpon>frmConsultaPagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proceso\frmEliminarPagos.resx">
+      <DependentUpon>frmEliminarPagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Proceso\frmEliminarPrestamos.resx">
       <DependentUpon>frmEliminarPrestamos.cs</DependentUpon>

@@ -62,5 +62,12 @@ namespace Prestamos
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void eliminarPagosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Proceso.frmEliminarPagos frm = new Proceso.frmEliminarPagos();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
