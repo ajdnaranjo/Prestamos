@@ -62,7 +62,10 @@ namespace Prestamos.Proceso
 
         private void cbNoPrestamo_SelectedValueChanged(object sender, EventArgs e)
         {
-           
+            if (cbNoPrestamo.SelectedValue != null)
+            {
+                llenarGrid(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
+            }
         }
 
         private void cbNoPrestamo_MouseClick(object sender, MouseEventArgs e)

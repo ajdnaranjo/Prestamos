@@ -144,5 +144,24 @@ namespace Prestamos.Repositorios
 
             return query;
         }
+
+        public decimal PorCobrar(DateTime fechaIni, DateTime FechaFinal)
+        {
+            decimal valor = 0;     
+            using (var context = new PrestamosEntities())
+            {
+               
+
+                var query = context.GetPorCobrarXFecha(fechaIni, FechaFinal).FirstOrDefault();
+
+
+
+                if (query == null) valor = 0;
+                else valor = decimal.Parse(query.ToString());
+            }
+            
+
+            return valor;
+        }
     }
 }

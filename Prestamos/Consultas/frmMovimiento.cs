@@ -29,6 +29,8 @@ namespace Prestamos.Consultas
                 repoPagos.TotalPagosxDia(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N");
             txtTotalAbonos.Text = 
                 repoPagos.NoAbonosXDia(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString();
+            txtPorCobrar.Text = 
+                repoPagos.PorCobrar(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N");
         }
 
       
