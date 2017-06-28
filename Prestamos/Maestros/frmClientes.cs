@@ -40,8 +40,8 @@ namespace Prestamos.Maestros
 
         private void txtDocumento_Leave(object sender, EventArgs e)
         {
-            int salida;
-            bool entero = Int32.TryParse(txtDocumento.Text.Trim(), out salida);
+            long salida;
+            bool entero = long.TryParse(txtDocumento.Text.Trim(), out salida);
             if (txtDocumento.Text.Trim() != "")
             {
                 if (!entero)
@@ -76,15 +76,14 @@ namespace Prestamos.Maestros
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            int salida;
-            long salida2;
-            bool entero = Int32.TryParse(txtDocumento.Text.Trim(), out salida);
+            long salida;            
+            bool entero = long.TryParse(txtDocumento.Text.Trim(), out salida);
             if (!entero)
             {
                 MessageBox.Show("El documento debe ser un número entero.");
                 return;
             }
-            entero= Int64.TryParse(txtCelular.Text.Trim(), out salida2);
+            entero= long.TryParse(txtCelular.Text.Trim(), out salida);
             if (!entero)
             {
                 MessageBox.Show("El celular debe ser un número entero.");
@@ -147,10 +146,10 @@ namespace Prestamos.Maestros
         private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvClientes.CurrentRow;
-            int salida;
+            long salida;
             if (row.Cells[0].Value.ToString() != "")
             {
-                bool entero = Int32.TryParse(row.Cells[0].Value.ToString(), out salida);
+                bool entero = long.TryParse(row.Cells[0].Value.ToString(), out salida);
                 if (entero)
                 {
                     var repo = new RepositorioClientes();

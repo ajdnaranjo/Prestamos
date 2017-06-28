@@ -25,7 +25,7 @@ namespace Prestamos.Proceso
             if (txtDocumento.Text.Trim() != "")
             {
                 RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
-                var prestamos = repo.GetPrestamosXDocumento(int.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
+                var prestamos = repo.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
 
                 if (prestamos.Count != 0)
                 {
@@ -183,14 +183,14 @@ namespace Prestamos.Proceso
         private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvClientes.CurrentRow;
-            int salida;
+            long salida;
             if (row.Cells[0].Value.ToString() != "")
             {
-                bool entero = Int32.TryParse(row.Cells[0].Value.ToString(), out salida);
+                bool entero = long.TryParse(row.Cells[0].Value.ToString(), out salida);
                 if (entero)
                 {
                     var repo = new RepositorioClientes();
-                    var cliente = repo.ClienteXDocumento(int.Parse(row.Cells[0].Value.ToString()));
+                    var cliente = repo.ClienteXDocumento(long.Parse(row.Cells[0].Value.ToString()));
                     txtDocumento.Text = cliente.Documento.ToString();
                     txtDocumento.Focus();
                 }

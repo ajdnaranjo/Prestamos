@@ -24,8 +24,8 @@ namespace Prestamos.Proceso
             {
 
                 txtNombre.Text = string.Empty;
-                int salida;
-                bool entero = Int32.TryParse(txtDocumento.Text.Trim(), out salida);
+                long salida;
+                bool entero = long.TryParse(txtDocumento.Text.Trim(), out salida);
                 if (entero)
                 {
                     RepositorioClientes repo = new RepositorioClientes();

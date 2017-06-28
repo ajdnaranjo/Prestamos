@@ -74,8 +74,9 @@ namespace Prestamos.Proceso
         { 
             bool flag = true;
             int salida;
+            long salida3;
             decimal salida2;
-            bool entero = Int32.TryParse(txtDocumento.Text.Trim(), out salida);
+            bool entero = long.TryParse(txtDocumento.Text.Trim(), out salida3);
             if (!entero) flag = false;
             entero = decimal.TryParse(txtVlrPrestamo.Text.Trim(), out salida2);
             if (!entero) flag = false;
@@ -90,8 +91,8 @@ namespace Prestamos.Proceso
         private void txtDocumento_Leave(object sender, EventArgs e)
         {
             txtNombre.Text = string.Empty;
-            int salida;
-            bool entero = Int32.TryParse(txtDocumento.Text.Trim(), out salida);
+            long salida;
+            bool entero = long.TryParse(txtDocumento.Text.Trim(), out salida);
             if (entero)
             {
                 RepositorioClientes repo = new RepositorioClientes();

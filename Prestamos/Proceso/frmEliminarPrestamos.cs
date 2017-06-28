@@ -24,8 +24,8 @@ namespace Prestamos.Proceso
             {
 
                 txtNombre.Text = string.Empty;
-                int salida;
-                bool entero = Int32.TryParse(txtDocumento.Text.Trim(), out salida);
+                long salida;
+                bool entero = long.TryParse(txtDocumento.Text.Trim(), out salida);
                 if (entero)
                 {
                     RepositorioClientes repo = new RepositorioClientes();
@@ -37,7 +37,7 @@ namespace Prestamos.Proceso
 
 
                 RepositorioCrearPrestamo repop = new RepositorioCrearPrestamo();
-                var prestamos = repop.GetPrestamosXDocumento(int.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
+                var prestamos = repop.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
 
                 if (prestamos.Count != 0)
                 {

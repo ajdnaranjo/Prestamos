@@ -69,7 +69,7 @@ namespace Prestamos.Repositorios
 
         }
 
-        public List<Prestamo> GetPrestamosXDocumento(int documento)
+        public List<Prestamo> GetPrestamosXDocumento(long documento)
         {
             var query = new List<Prestamo>();
             using (var context = new PrestamosEntities())

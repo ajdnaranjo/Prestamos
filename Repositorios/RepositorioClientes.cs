@@ -8,7 +8,7 @@ namespace Prestamos.Repositorios
     [Serializable]
     public class RepositorioClientes: PrestamosEntities
     {
-        public Cliente ClienteXDocumento(int documento)
+        public Cliente ClienteXDocumento(long documento)
         {
             var query = new Cliente();
 
