@@ -14,18 +14,11 @@ namespace Prestamos.Repositorios
     
     public partial class Cliente
     {
-        public Cliente()
-        {
-            this.Prestamo = new HashSet<Prestamo>();
-        }
-    
-        public int Documento { get; set; }
+        public long Documento { get; set; }
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string Celular { get; set; }
         public bool Estado { get; set; }
-    
-        public virtual ICollection<Prestamo> Prestamo { get; set; }
     }
 }

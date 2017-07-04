@@ -50,12 +50,12 @@ namespace Prestamos.Maestros
                     return;
                 }
                 else
-                    llenarCliente(int.Parse(txtDocumento.Text.Trim()));
+                    llenarCliente(long.Parse(txtDocumento.Text.Trim()));
             }
 
         }
 
-        private void llenarCliente(int documento)
+        private void llenarCliente(long documento)
         {
             RepositorioClientes repo = new RepositorioClientes();
             Cliente cliente = new Cliente();
@@ -100,7 +100,7 @@ namespace Prestamos.Maestros
             if (ddlEstado.SelectedItem.Equals("InActivo")) estado = false;
             var cliente = new Cliente()
             {
-                Documento = int.Parse(txtDocumento.Text.Trim()),
+                Documento = long.Parse(txtDocumento.Text.Trim()),
                 Nombre  = txtNombre.Text.Trim(),
                 Direccion = txtDireccion.Text.Trim(),
                 Telefono = txtTelefono.Text.Trim(),
@@ -153,7 +153,7 @@ namespace Prestamos.Maestros
                 if (entero)
                 {
                     var repo = new RepositorioClientes();
-                    var cliente = repo.ClienteXDocumento(int.Parse(row.Cells[0].Value.ToString()));
+                    var cliente = repo.ClienteXDocumento(long.Parse(row.Cells[0].Value.ToString()));
                     txtDocumento.Text = cliente.Documento.ToString();
                     txtNombre.Text = cliente.Nombre;
                     txtDireccion.Text = cliente.Direccion;

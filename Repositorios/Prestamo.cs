@@ -20,7 +20,7 @@ namespace Prestamos.Repositorios
         }
     
         public int NoPrestamo { get; set; }
-        public int Documento { get; set; }
+        public long Documento { get; set; }
         public System.DateTime FechaPrestamo { get; set; }
         public decimal ValorPrestamo { get; set; }
         public int NoCuotas { get; set; }
@@ -32,7 +32,6 @@ namespace Prestamos.Repositorios
         public decimal Total { get; set; }
         public bool Estado { get; set; }
     
-        public virtual Cliente Cliente { get; set; }
         public virtual FormasPago FormasPago { get; set; }
         public virtual ICollection<PrestamoPago> PrestamoPago { get; set; }
     }

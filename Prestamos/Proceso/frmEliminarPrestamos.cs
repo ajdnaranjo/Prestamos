@@ -30,7 +30,7 @@ namespace Prestamos.Proceso
                 {
                     RepositorioClientes repo = new RepositorioClientes();
                     Cliente cliente = new Cliente();
-                    cliente = repo.ClienteXDocumento(int.Parse(txtDocumento.Text.Trim()));
+                    cliente = repo.ClienteXDocumento(long.Parse(txtDocumento.Text.Trim()));
                     if (cliente != null && cliente.Estado == true)
                         txtNombre.Text = cliente.Nombre;
                 }

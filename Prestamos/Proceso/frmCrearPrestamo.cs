@@ -37,7 +37,7 @@ namespace Prestamos.Proceso
                 var prestamo = new Prestamo()
                 {
                     NoPrestamo = int.Parse(txtNoPrestamo.Text.Trim()),
-                    Documento = int.Parse(txtDocumento.Text.Trim()),
+                    Documento = long.Parse(txtDocumento.Text.Trim()),
                     ValorPrestamo = decimal.Parse(txtVlrPrestamo.Text.Trim()),
                     NoCuotas = int.Parse(txtNoCuotas.Text.Trim()),
                     FormaPagoID = int.Parse(cbFormaPago.SelectedValue.ToString()),
@@ -97,7 +97,7 @@ namespace Prestamos.Proceso
             {
                 RepositorioClientes repo = new RepositorioClientes();
                 Cliente cliente = new Cliente();
-                cliente = repo.ClienteXDocumento(int.Parse(txtDocumento.Text.Trim()));
+                cliente = repo.ClienteXDocumento(long.Parse(txtDocumento.Text.Trim()));
                 if (cliente != null && cliente.Estado == true)
                     txtNombre.Text = cliente.Nombre;
               

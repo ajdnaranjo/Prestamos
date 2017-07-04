@@ -21,11 +21,11 @@ namespace Prestamos.Consultas
                 var repo = new RepositorioCrearPrestamo();
                 var repocliente = new RepositorioClientes();
                 List<Prestamo> prestamos = new List<Prestamo>();
-                prestamos = repo.GetPrestamosXDocumento(int.Parse(txtDocumento.Text.Trim()));
+                prestamos = repo.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim()));
                 cbNoPrestamo.DisplayMember = "NoPrestamo";
                 cbNoPrestamo.ValueMember = "NoPrestamo";
                 cbNoPrestamo.DataSource = prestamos;
-                var cliente = repocliente.ClienteXDocumento(int.Parse(txtDocumento.Text.Trim()));
+                var cliente = repocliente.ClienteXDocumento(long.Parse(txtDocumento.Text.Trim()));
                 txtNombre.Text = cliente.Nombre;
             }
         }

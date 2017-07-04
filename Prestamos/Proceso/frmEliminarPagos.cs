@@ -30,14 +30,14 @@ namespace Prestamos.Proceso
                 {
                     RepositorioClientes repo = new RepositorioClientes();
                     Cliente cliente = new Cliente();
-                    cliente = repo.ClienteXDocumento(int.Parse(txtDocumento.Text.Trim()));
+                    cliente = repo.ClienteXDocumento(long.Parse(txtDocumento.Text.Trim()));
                     if (cliente != null && cliente.Estado == true)
                         txtNombre.Text = cliente.Nombre;
                 }
 
 
                 RepositorioCrearPrestamo repop = new RepositorioCrearPrestamo();
-                var prestamos = repop.GetPrestamosXDocumento(int.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
+                var prestamos = repop.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
 
                 if (prestamos.Count != 0)
                 {

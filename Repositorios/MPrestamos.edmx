@@ -122,26 +122,12 @@
     <edmx:ConceptualModels>
       <Schema Namespace="PrestamosModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="PrestamosEntities" p1:LazyLoadingEnabled="true">
-          <EntitySet Name="Cliente" EntityType="PrestamosModel.Cliente" />
           <EntitySet Name="FormasPago" EntityType="PrestamosModel.FormasPago" />
           <EntitySet Name="Pago" EntityType="PrestamosModel.Pago" />
           <EntitySet Name="PrestamoPago" EntityType="PrestamosModel.PrestamoPago" />
           <AssociationSet Name="FK_Pago_PrestamoPago" Association="PrestamosModel.FK_Pago_PrestamoPago">
             <End Role="PrestamoPago" EntitySet="PrestamoPago" />
             <End Role="Pago" EntitySet="Pago" />
-          </AssociationSet>
-          <EntitySet Name="Prestamo" EntityType="PrestamosModel.Prestamo" />
-          <AssociationSet Name="FK_Prestamos_Cliente" Association="PrestamosModel.FK_Prestamos_Cliente">
-            <End Role="Cliente" EntitySet="Cliente" />
-            <End Role="Prestamo" EntitySet="Prestamo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Prestamo_FormasPago" Association="PrestamosModel.FK_Prestamo_FormasPago">
-            <End Role="FormasPago" EntitySet="FormasPago" />
-            <End Role="Prestamo" EntitySet="Prestamo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PrestamoPago_Prestamo" Association="PrestamosModel.FK_PrestamoPago_Prestamo">
-            <End Role="Prestamo" EntitySet="Prestamo" />
-            <End Role="PrestamoPago" EntitySet="PrestamoPago" />
           </AssociationSet>
           <FunctionImport Name="usp_SelectPorCobrar" ReturnType="Collection(Decimal)">
             <Parameter Name="fechaIni" Mode="In" Type="DateTime" />
@@ -151,19 +137,17 @@
             <Parameter Name="fechaIni" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="Cliente" EntityType="PrestamosModel.Cliente" />
+          <EntitySet Name="Prestamo" EntityType="PrestamosModel.Prestamo" />
+          <AssociationSet Name="FK_Prestamo_FormasPago" Association="PrestamosModel.FK_Prestamo_FormasPago">
+            <End Role="FormasPago" EntitySet="FormasPago" />
+            <End Role="Prestamo" EntitySet="Prestamo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PrestamoPago_Prestamo" Association="PrestamosModel.FK_PrestamoPago_Prestamo">
+            <End Role="Prestamo" EntitySet="Prestamo" />
+            <End Role="PrestamoPago" EntitySet="PrestamoPago" />
+          </AssociationSet>
           </EntityContainer>
-        <EntityType Name="Cliente">
-          <Key>
-            <PropertyRef Name="Documento" />
-          </Key>
-          <Property Name="Documento" Type="Int32" Nullable="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
-          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Celular" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
-          <Property Type="Boolean" Name="Estado" Nullable="false" />
-          <NavigationProperty Name="Prestamo" Relationship="PrestamosModel.FK_Prestamos_Cliente" FromRole="Cliente" ToRole="Prestamo" />
-        </EntityType>
         <EntityType Name="FormasPago">
           <Key>
             <PropertyRef Name="FormaPagoID" />
@@ -205,12 +189,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Documento" />
+          </Key>
+          <Property Type="Int64" Name="Documento" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Direccion" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Telefono" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Celular" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
+        </EntityType>
         <EntityType Name="Prestamo">
           <Key>
             <PropertyRef Name="NoPrestamo" />
           </Key>
           <Property Type="Int32" Name="NoPrestamo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="Documento" Nullable="false" />
+          <Property Type="Int64" Name="Documento" Nullable="false" />
           <Property Type="DateTime" Name="FechaPrestamo" Nullable="false" Precision="3" />
           <Property Type="Decimal" Name="ValorPrestamo" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Int32" Name="NoCuotas" Nullable="false" />
@@ -218,25 +213,12 @@
           <Property Type="Decimal" Name="Intereses" Nullable="false" Precision="18" Scale="0" />
           <Property Type="Decimal" Name="ValorCuota" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Decimal" Name="Ganancias" Nullable="false" Precision="19" Scale="4" />
-          <Property Type="Decimal" Name="Saldo" Precision="19" Scale="4" Nullable="false" />
+          <Property Type="Decimal" Name="Saldo" Nullable="false" Precision="19" Scale="4" />
           <Property Type="Decimal" Name="Total" Nullable="false" Precision="19" Scale="4" />
-          <NavigationProperty Name="Cliente" Relationship="PrestamosModel.FK_Prestamos_Cliente" FromRole="Prestamo" ToRole="Cliente" />
+          <Property Type="Boolean" Name="Estado" Nullable="false" />
           <NavigationProperty Name="FormasPago" Relationship="PrestamosModel.FK_Prestamo_FormasPago" FromRole="Prestamo" ToRole="FormasPago" />
           <NavigationProperty Name="PrestamoPago" Relationship="PrestamosModel.FK_PrestamoPago_Prestamo" FromRole="Prestamo" ToRole="PrestamoPago" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Prestamos_Cliente">
-          <End Type="PrestamosModel.Cliente" Role="Cliente" Multiplicity="1" />
-          <End Type="PrestamosModel.Prestamo" Role="Prestamo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Cliente">
-              <PropertyRef Name="Documento" />
-            </Principal>
-            <Dependent Role="Prestamo">
-              <PropertyRef Name="Documento" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Prestamo_FormasPago">
           <End Type="PrestamosModel.FormasPago" Role="FormasPago" Multiplicity="1" />
           <End Type="PrestamosModel.Prestamo" Role="Prestamo" Multiplicity="*" />
@@ -267,18 +249,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PrestamosModelStoreContainer" CdmEntityContainer="PrestamosEntities">
-          <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="PrestamosModel.Cliente">
-              <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Documento" ColumnName="Documento" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Celular" ColumnName="Celular" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FormasPago">
             <EntityTypeMapping TypeName="PrestamosModel.FormasPago">
               <MappingFragment StoreEntitySet="FormasPago">
@@ -307,6 +277,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_SelectPorCobrar" FunctionName="PrestamosModel.Store.usp_SelectPorCobrar" />
+          <FunctionImportMapping FunctionImportName="GetPorCobrarXFecha" FunctionName="PrestamosModel.Store.usp_SelectPorCobrar" />
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="PrestamosModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Celular" ColumnName="Celular" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Prestamo">
             <EntityTypeMapping TypeName="PrestamosModel.Prestamo">
               <MappingFragment StoreEntitySet="Prestamo">
@@ -325,8 +309,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectPorCobrar" FunctionName="PrestamosModel.Store.usp_SelectPorCobrar" />
-          <FunctionImportMapping FunctionImportName="GetPorCobrarXFecha" FunctionName="PrestamosModel.Store.usp_SelectPorCobrar" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
