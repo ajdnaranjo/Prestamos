@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgvPagos = new System.Windows.Forms.DataGridView();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbNoPrestamo = new System.Windows.Forms.ComboBox();
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvPagos = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.idpago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pagada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
@@ -60,6 +61,24 @@
             this.groupBox1.Size = new System.Drawing.Size(497, 339);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // dgvPagos
+            // 
+            this.dgvPagos.AllowUserToAddRows = false;
+            this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idpago,
+            this.Cuota,
+            this.ValorPago,
+            this.Fecha,
+            this.Pagada,
+            this.eliminar});
+            this.dgvPagos.Location = new System.Drawing.Point(6, 106);
+            this.dgvPagos.Name = "dgvPagos";
+            this.dgvPagos.ReadOnly = true;
+            this.dgvPagos.Size = new System.Drawing.Size(485, 227);
+            this.dgvPagos.TabIndex = 7;
+            this.dgvPagos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPagos_CellContentClick);
             // 
             // txtNombre
             // 
@@ -114,23 +133,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Documento:";
             // 
-            // dgvPagos
-            // 
-            this.dgvPagos.AllowUserToAddRows = false;
-            this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idpago,
-            this.Cuota,
-            this.ValorPago,
-            this.Fecha,
-            this.eliminar});
-            this.dgvPagos.Location = new System.Drawing.Point(6, 106);
-            this.dgvPagos.Name = "dgvPagos";
-            this.dgvPagos.ReadOnly = true;
-            this.dgvPagos.Size = new System.Drawing.Size(485, 227);
-            this.dgvPagos.TabIndex = 7;
-            this.dgvPagos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPagos_CellContentClick);
-            // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -155,6 +157,7 @@
             this.Cuota.HeaderText = "Cuota";
             this.Cuota.Name = "Cuota";
             this.Cuota.ReadOnly = true;
+            this.Cuota.Width = 50;
             // 
             // ValorPago
             // 
@@ -169,6 +172,14 @@
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
+            // 
+            // Pagada
+            // 
+            this.Pagada.DataPropertyName = "Pagado";
+            this.Pagada.HeaderText = "Pagada";
+            this.Pagada.Name = "Pagada";
+            this.Pagada.ReadOnly = true;
+            this.Pagada.Width = 80;
             // 
             // eliminar
             // 
@@ -210,6 +221,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cuota;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Pagada;
         private System.Windows.Forms.DataGridViewLinkColumn eliminar;
 
     }

@@ -20,6 +20,7 @@ namespace Prestamos.Repositorios
         public decimal Saldo { get; set; }
         public Nullable<System.DateTime> FechaPago { get; set; }
         public Nullable<int> Cuota { get; set; }
+        public Nullable<bool> Pagado { get; set; }
     
         public virtual PrestamoPago PrestamoPago { get; set; }
     }

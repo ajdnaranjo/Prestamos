@@ -115,7 +115,7 @@ namespace Prestamos.Proceso
                     try
                     {
                         repo.EliminarPago(noCouta);
-                        repoPrestamo.RecalcularSaldo(noPrestamo, saldo);
+                        //repoPrestamo.RecalcularSaldo(noPrestamo, saldo);
                         limpiarFormulario();
 
                         string mensaje = string.Format("La cuota No. {0} por valor de $ {1} fué eliminada correctamente", cuota.Cuota, cuota.ValorPago.ToString("N"));

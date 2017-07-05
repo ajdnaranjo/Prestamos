@@ -10,20 +10,15 @@ namespace Prestamos.Repositorios
 
         public void GuardarPago(Pago pago, int noPrestamo)
         {
-            using (var context = new PrestamosEntities())
+         /*   using (var context = new PrestamosEntities())
             {
+                Pago p = context.Pago.FirstOrDefault(cl => cl.Documento == cliente.Documento);
 
-                var prestpago = new PrestamoPago();
-
-                prestpago = new PrestamoPago();
-
-                prestpago.NoPrestamo = noPrestamo;
-                context.PrestamoPago.Add(prestpago);
-
-                context.SaveChanges();
-
-                int id = prestpago.PrestamoPagoID;
-
+                c.Nombre = cliente.Nombre;
+                c.Direccion = cliente.Direccion;
+                c.Telefono = cliente.Telefono;
+                c.Celular = cliente.Celular;
+                c.Estado = cliente.Estado;
 
                 var pag = new Pago();
 
@@ -43,7 +38,7 @@ namespace Prestamos.Repositorios
                 context.SaveChanges();
 
             }
-
+            */
         }
 
         private int NumeroCuotaXNoPrestamo(int NoPrestamo)
@@ -122,9 +117,8 @@ namespace Prestamos.Repositorios
             {
 
                 Pago pago = context.Pago.Where(x => x.IDPago == idPago).FirstOrDefault();
-                PrestamoPago prestamoPago = context.PrestamoPago.Where(x => x.PrestamoPagoID == pago.PrestamoPagoID).FirstOrDefault();
-                context.Pago.Remove(pago);
-                context.PrestamoPago.Remove(prestamoPago);
+
+                pago.Pagado = false;
                 context.SaveChanges();
 
             }

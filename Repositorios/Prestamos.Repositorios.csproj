@@ -101,7 +101,6 @@
     <None Include="MPrestamos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MPrestamos.edmx</DependentUpon>
-      <LastGenOutput>MPrestamos.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

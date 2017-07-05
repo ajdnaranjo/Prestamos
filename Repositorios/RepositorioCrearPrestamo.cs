@@ -65,6 +65,39 @@ namespace Prestamos.Repositorios
 
                     context.SaveChanges();
 
+                    int noPrestamo = presta.NoPrestamo;
+                    decimal saldo = presta.Total;
+            
+                    for(int i=1; i<= presta.NoCuotas ; i++)
+                    {
+                        var prestpago = new PrestamoPago();
+
+                        prestpago = new PrestamoPago();
+
+                        prestpago.NoPrestamo = noPrestamo;
+                        context.PrestamoPago.Add(prestpago);
+
+                        context.SaveChanges();
+
+                        int id = prestpago.PrestamoPagoID;
+
+
+                        var pag = new Pago();
+
+                        pag = new Pago();
+                        pag.PrestamoPagoID = id;
+                        pag.Cuota = i;
+                        pag.ValorPago = presta.Total / presta.NoCuotas;                        
+                        saldo = saldo - pag.ValorPago;
+                        pag.Saldo = saldo;
+                        pag.FechaPago = presta.FechaPrestamo.AddDays(i);
+                        pag.Pagado = false;
+
+                        context.Pago.Add(pag);
+
+                        context.SaveChanges();
+                    }
+
             }
 
         }

@@ -52,6 +52,7 @@
           <Property Name="ValorPago" Type="money" Nullable="false" />
           <Property Name="Saldo" Type="money" Nullable="false" />
           <Property Name="FechaPago" Type="datetime" />
+          <Property Name="Pagado" Type="bit" />
         </EntityType>
         <EntityType Name="Prestamo">
           <Key>
@@ -167,6 +168,7 @@
           <NavigationProperty Name="PrestamoPago" Relationship="PrestamosModel.FK_Pago_PrestamoPago" FromRole="Pago" ToRole="PrestamoPago" />
           <Property Name="FechaPago" Type="DateTime" Precision="3" />
           <Property Name="Cuota" Type="Int32" />
+          <Property Type="Boolean" Name="Pagado" />
         </EntityType>
         <EntityType Name="PrestamoPago">
           <Key>
@@ -260,6 +262,7 @@
           <EntitySetMapping Name="Pago">
             <EntityTypeMapping TypeName="PrestamosModel.Pago">
               <MappingFragment StoreEntitySet="Pago">
+                <ScalarProperty Name="Pagado" ColumnName="Pagado" />
                 <ScalarProperty Name="Cuota" ColumnName="Cuota" />
                 <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
                 <ScalarProperty Name="Saldo" ColumnName="Saldo" />
