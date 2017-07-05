@@ -184,6 +184,7 @@ namespace Prestamos.Repositorios
                 Prestamo p = context.Prestamo.FirstOrDefault(cl => cl.NoPrestamo == noPrestamo);
                 decimal sumaSaldos = p.Total;
                 decimal sumaS = 0;
+               // decimal sumaSaldosAnt = 0;
                 List<Pago> pagos = (from pa in context.Pago
                              join pp in context.PrestamoPago on pa.PrestamoPagoID equals pp.PrestamoPagoID
                              where pp.NoPrestamo == p.NoPrestamo
@@ -193,8 +194,10 @@ namespace Prestamos.Repositorios
                 foreach (Pago r in pagos)
                 {
                     Pago pago = context.Pago.FirstOrDefault(x => x.IDPago == r.IDPago);
-
+                    //sumaSaldosAnt = sumaSaldos;
                     sumaSaldos = sumaSaldos - pago.ValorPago;
+
+                  
                     pago.Saldo = sumaSaldos;
 
                     context.SaveChanges();

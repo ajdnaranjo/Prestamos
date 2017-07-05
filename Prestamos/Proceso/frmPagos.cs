@@ -42,35 +42,41 @@ namespace Prestamos.Proceso
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
-            RepositorioPagos repoPago = new RepositorioPagos();
-            var prestamo = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
-            var pago = new Pago();
-
-            pago.ValorPago = decimal.Parse(txtAbono.Text.Trim());
-            pago.Saldo = prestamo.Saldo - pago.ValorPago;
-            pago.FechaPago = DateTime.Parse(dtpFechaPago.Text);
-            pago.IDPago = int.Parse(cbCuotas.SelectedValue.ToString());
-       
-            txtSaldo.Text = pago.Saldo.ToString("N");
-
-            try
+            if (cbCuotas.SelectedItem.ToString() == "Seleccionar")
             {
-                repoPago.GuardarPago(pago, prestamo.NoPrestamo);                
-                MessageBox.Show("El pago se ha ingresado correctamente.");
-                
-                var prestamop = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
-                if (prestamop.Saldo <= 0) btnGuardar.Enabled = false;
+                MessageBox.Show("Debe seleccionar una cuota.");
+            }
+            else
+            {
+                RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
+                RepositorioPagos repoPago = new RepositorioPagos();
+                var prestamo = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
+                var pago = new Pago();
 
-                LimpiarFormulario();
+                pago.ValorPago = decimal.Parse(txtAbono.Text.Trim());
+                pago.Saldo = prestamo.Saldo - pago.ValorPago;
+                pago.FechaPago = DateTime.Parse(dtpFechaPago.Text);
+                pago.IDPago = int.Parse(cbCuotas.SelectedValue.ToString());
+
+                txtSaldo.Text = pago.Saldo.ToString("N");
+
+                try
+                {
+                    repoPago.GuardarPago(pago, prestamo.NoPrestamo);
+                    MessageBox.Show("El pago se ha ingresado correctamente.");
+
+                    var prestamop = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
+                    if (prestamop.Saldo <= 0) btnGuardar.Enabled = false;
+
+                    LimpiarFormulario();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha ocurrido un error, intente nuevamente.");
+                }
 
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ha ocurrido un error, intente nuevamente.");
-            }
-
-            
         }
 
         private void cbPrestamos_SelectedValueChanged(object sender, EventArgs e)
