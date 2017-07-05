@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbCuotas = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.txtVlrCuota = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblMensaje = new System.Windows.Forms.Label();
@@ -55,8 +57,6 @@
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbCuotas = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -88,6 +88,23 @@
             this.groupBox1.Size = new System.Drawing.Size(550, 135);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // cbCuotas
+            // 
+            this.cbCuotas.FormattingEnabled = true;
+            this.cbCuotas.Location = new System.Drawing.Point(78, 73);
+            this.cbCuotas.Name = "cbCuotas";
+            this.cbCuotas.Size = new System.Drawing.Size(100, 21);
+            this.cbCuotas.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 75);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Cuota:";
             // 
             // txtVlrCuota
             // 
@@ -158,11 +175,12 @@
             // 
             // txtSaldo
             // 
-            this.txtSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaldo.ForeColor = System.Drawing.Color.Red;
             this.txtSaldo.Location = new System.Drawing.Point(78, 100);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.ReadOnly = true;
-            this.txtSaldo.Size = new System.Drawing.Size(100, 23);
+            this.txtSaldo.Size = new System.Drawing.Size(100, 20);
             this.txtSaldo.TabIndex = 6;
             // 
             // label6
@@ -337,23 +355,6 @@
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
             this.Estado.Width = 80;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(7, 75);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(38, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Cuota:";
-            // 
-            // cbCuotas
-            // 
-            this.cbCuotas.FormattingEnabled = true;
-            this.cbCuotas.Location = new System.Drawing.Point(78, 73);
-            this.cbCuotas.Name = "cbCuotas";
-            this.cbCuotas.Size = new System.Drawing.Size(100, 21);
-            this.cbCuotas.TabIndex = 16;
             // 
             // frmPagos
             // 

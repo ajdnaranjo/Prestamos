@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,11 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtgDatos = new System.Windows.Forms.DataGridView();
-            this.cbNoPrestamo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.idpago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Couta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +51,11 @@
             this.fechapago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pagada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cbNoPrestamo = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatos)).BeginInit();
@@ -132,6 +132,9 @@
             // 
             // txtSaldoPendiente
             // 
+            this.txtSaldoPendiente.BackColor = System.Drawing.SystemColors.Control;
+            this.txtSaldoPendiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSaldoPendiente.ForeColor = System.Drawing.Color.Red;
             this.txtSaldoPendiente.Location = new System.Drawing.Point(98, 72);
             this.txtSaldoPendiente.Name = "txtSaldoPendiente";
             this.txtSaldoPendiente.ReadOnly = true;
@@ -209,6 +212,65 @@
             this.dtgDatos.Size = new System.Drawing.Size(595, 218);
             this.dtgDatos.TabIndex = 0;
             // 
+            // idpago
+            // 
+            this.idpago.DataPropertyName = "idpago";
+            this.idpago.HeaderText = "Pago ID";
+            this.idpago.Name = "idpago";
+            this.idpago.ReadOnly = true;
+            this.idpago.Visible = false;
+            // 
+            // Couta
+            // 
+            this.Couta.DataPropertyName = "cuota";
+            this.Couta.HeaderText = "Cuota";
+            this.Couta.Name = "Couta";
+            this.Couta.ReadOnly = true;
+            this.Couta.Width = 50;
+            // 
+            // ValorPago
+            // 
+            this.ValorPago.DataPropertyName = "valorpago";
+            dataGridViewCellStyle3.Format = "string.Format(\"N\")";
+            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ValorPago.HeaderText = "ValorPago";
+            this.ValorPago.Name = "ValorPago";
+            this.ValorPago.ReadOnly = true;
+            // 
+            // Saldo
+            // 
+            this.Saldo.DataPropertyName = "saldo";
+            dataGridViewCellStyle4.Format = "0.00##";
+            this.Saldo.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Saldo.HeaderText = "Saldo";
+            this.Saldo.Name = "Saldo";
+            this.Saldo.ReadOnly = true;
+            // 
+            // fechapago
+            // 
+            this.fechapago.DataPropertyName = "FechaPago";
+            this.fechapago.HeaderText = "Fecha Pago";
+            this.fechapago.Name = "fechapago";
+            this.fechapago.ReadOnly = true;
+            // 
+            // FechaReal
+            // 
+            this.FechaReal.DataPropertyName = "FechaPagoReal";
+            this.FechaReal.HeaderText = "Fecha Pago Real";
+            this.FechaReal.Name = "FechaReal";
+            this.FechaReal.ReadOnly = true;
+            this.FechaReal.Width = 150;
+            // 
+            // Pagada
+            // 
+            this.Pagada.DataPropertyName = "pagado";
+            this.Pagada.HeaderText = "Pagada";
+            this.Pagada.Name = "Pagada";
+            this.Pagada.ReadOnly = true;
+            this.Pagada.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Pagada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Pagada.Width = 50;
+            // 
             // cbNoPrestamo
             // 
             this.cbNoPrestamo.DisplayMember = "NoPrestamo";
@@ -251,71 +313,13 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(13, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(630, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Consulta pagos";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // idpago
-            // 
-            this.idpago.DataPropertyName = "idpago";
-            this.idpago.HeaderText = "Pago ID";
-            this.idpago.Name = "idpago";
-            this.idpago.ReadOnly = true;
-            this.idpago.Visible = false;
-            // 
-            // Couta
-            // 
-            this.Couta.DataPropertyName = "cuota";
-            this.Couta.HeaderText = "Cuota";
-            this.Couta.Name = "Couta";
-            this.Couta.ReadOnly = true;
-            this.Couta.Width = 50;
-            // 
-            // ValorPago
-            // 
-            this.ValorPago.DataPropertyName = "valorpago";
-            dataGridViewCellStyle1.Format = "string.Format(\"N\")";
-            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ValorPago.HeaderText = "ValorPago";
-            this.ValorPago.Name = "ValorPago";
-            this.ValorPago.ReadOnly = true;
-            // 
-            // Saldo
-            // 
-            this.Saldo.DataPropertyName = "saldo";
-            dataGridViewCellStyle2.Format = "0.00##";
-            this.Saldo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Saldo.HeaderText = "Saldo";
-            this.Saldo.Name = "Saldo";
-            this.Saldo.ReadOnly = true;
-            // 
-            // fechapago
-            // 
-            this.fechapago.DataPropertyName = "FechaPago";
-            this.fechapago.HeaderText = "Fecha Pago";
-            this.fechapago.Name = "fechapago";
-            this.fechapago.ReadOnly = true;
-            // 
-            // FechaReal
-            // 
-            this.FechaReal.DataPropertyName = "FechaPagoReal";
-            this.FechaReal.HeaderText = "Fecha Pago Real";
-            this.FechaReal.Name = "FechaReal";
-            this.FechaReal.ReadOnly = true;
-            this.FechaReal.Width = 150;
-            // 
-            // Pagada
-            // 
-            this.Pagada.DataPropertyName = "pagado";
-            this.Pagada.HeaderText = "Pagada";
-            this.Pagada.Name = "Pagada";
-            this.Pagada.ReadOnly = true;
-            this.Pagada.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Pagada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Pagada.Width = 50;
             // 
             // frmConsultaPagos
             // 
