@@ -55,7 +55,7 @@ namespace Prestamos.Proceso
 
             try
             {
-                repoPago.GuardarPago(pago, int.Parse(cbPrestamos.SelectedValue.ToString()));                
+                repoPago.GuardarPago(int.Parse(cbCuotas.SelectedValue.ToString()), int.Parse(cbPrestamos.SelectedValue.ToString()));                
                 MessageBox.Show("El pago se ha ingresado correctamente.");
                 
                 var prestamop = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
@@ -79,9 +79,17 @@ namespace Prestamos.Proceso
                 if (!cbPrestamos.SelectedItem.Equals("Seleccionar"))
                 {
                     RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
+                    var repoPago = new RepositorioPagos();
                     var prestamo = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
                     txtSaldo.Text = prestamo.Saldo.ToString("N");
                     txtVlrCuota.Text = prestamo.ValorCuota.ToString("N");
+
+                    List<Pago> cuotas = repoPago.CuotasXPagar(int.Parse(cbPrestamos.SelectedValue.ToString()));
+
+                    cbCuotas.DisplayMember = "Cuota";
+                    cbCuotas.ValueMember = "IDPago";
+                    cbCuotas.DataSource = cuotas;
+                   
                     if (prestamo.Saldo <= 0)
                     {
                         MessageBox.Show("El prestamo ya ha sido cancelado, no se pueden realizar abonos.");
@@ -108,6 +116,9 @@ namespace Prestamos.Proceso
             cbPrestamos.DataSource = null;
             cbPrestamos.Items.Add("Seleccionar");
             cbPrestamos.SelectedItem = "Seleccionar";
+            cbCuotas.DataSource = null;
+            cbCuotas.Items.Add("Seleccionar");
+            cbCuotas.SelectedItem = "Seleccionar";
             txtValor.Text = string.Empty;
             txtAbono.Text = string.Empty;
             txtSaldo.Text = string.Empty;

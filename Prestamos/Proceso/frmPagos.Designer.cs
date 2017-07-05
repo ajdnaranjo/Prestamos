@@ -55,6 +55,8 @@
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cbCuotas = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -62,6 +64,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbCuotas);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtVlrCuota);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.lblMensaje);
@@ -132,7 +136,7 @@
             // btnNuevo
             // 
             this.btnNuevo.AllowDrop = true;
-            this.btnNuevo.Location = new System.Drawing.Point(382, 103);
+            this.btnNuevo.Location = new System.Drawing.Point(391, 102);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 24);
             this.btnNuevo.TabIndex = 9;
@@ -144,7 +148,7 @@
             // btnGuardar
             // 
             this.btnGuardar.AllowDrop = true;
-            this.btnGuardar.Location = new System.Drawing.Point(463, 103);
+            this.btnGuardar.Location = new System.Drawing.Point(469, 103);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 5;
@@ -155,7 +159,7 @@
             // txtSaldo
             // 
             this.txtSaldo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSaldo.Location = new System.Drawing.Point(78, 101);
+            this.txtSaldo.Location = new System.Drawing.Point(78, 100);
             this.txtSaldo.Name = "txtSaldo";
             this.txtSaldo.ReadOnly = true;
             this.txtSaldo.Size = new System.Drawing.Size(100, 23);
@@ -164,7 +168,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 104);
+            this.label6.Location = new System.Drawing.Point(7, 103);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 8;
@@ -173,9 +177,9 @@
             // txtAbono
             // 
             this.txtAbono.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAbono.Location = new System.Drawing.Point(78, 73);
+            this.txtAbono.Location = new System.Drawing.Point(261, 71);
             this.txtAbono.Name = "txtAbono";
-            this.txtAbono.Size = new System.Drawing.Size(100, 23);
+            this.txtAbono.Size = new System.Drawing.Size(121, 23);
             this.txtAbono.TabIndex = 4;
             this.txtAbono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAbono_KeyPress);
             this.txtAbono.Leave += new System.EventHandler(this.txtAbono_Leave);
@@ -183,7 +187,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 76);
+            this.label5.Location = new System.Drawing.Point(184, 76);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 6;
@@ -334,6 +338,23 @@
             this.Estado.ReadOnly = true;
             this.Estado.Width = 80;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(7, 75);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Cuota:";
+            // 
+            // cbCuotas
+            // 
+            this.cbCuotas.FormattingEnabled = true;
+            this.cbCuotas.Location = new System.Drawing.Point(78, 73);
+            this.cbCuotas.Name = "cbCuotas";
+            this.cbCuotas.Size = new System.Drawing.Size(100, 21);
+            this.cbCuotas.TabIndex = 16;
+            // 
             // frmPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -382,5 +403,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Estado;
+        private System.Windows.Forms.ComboBox cbCuotas;
+        private System.Windows.Forms.Label label10;
     }
 }

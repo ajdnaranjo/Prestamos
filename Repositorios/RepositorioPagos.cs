@@ -8,37 +8,24 @@ namespace Prestamos.Repositorios
     public class RepositorioPagos
     {
 
-        public void GuardarPago(Pago pago, int noPrestamo)
+        public void GuardarPago(int idPago, int noPrestamo)
         {
-         /*   using (var context = new PrestamosEntities())
+           using (var context = new PrestamosEntities())
             {
-                Pago p = context.Pago.FirstOrDefault(cl => cl.Documento == cliente.Documento);
 
-                c.Nombre = cliente.Nombre;
-                c.Direccion = cliente.Direccion;
-                c.Telefono = cliente.Telefono;
-                c.Celular = cliente.Celular;
-                c.Estado = cliente.Estado;
+                Pago p = context.Pago.FirstOrDefault(cl => cl.IDPago == idPago);
 
-                var pag = new Pago();
+                p.Pagado = true;
+                p.FechaPagoReal = DateTime.Now;
 
-                pag = new Pago();
-                pag.PrestamoPagoID = id;
-                pag.Cuota = NumeroCuotaXNoPrestamo(noPrestamo);
-                pag.ValorPago = pago.ValorPago;
-                pag.Saldo = pago.Saldo;
-                pag.FechaPago = pago.FechaPago;
+                Prestamo pp = context.Prestamo.FirstOrDefault(c => c.NoPrestamo == noPrestamo);
 
-                context.Pago.Add(pag);               
-
-                Prestamo p = context.Prestamo.FirstOrDefault(c => c.NoPrestamo == noPrestamo);
-                p.Saldo = pago.Saldo;
-                if (p.Saldo <= 0) p.Estado = false;
-
+                pp.Saldo = p.Saldo;
+                            
                 context.SaveChanges();
 
             }
-            */
+            
         }
 
         private int NumeroCuotaXNoPrestamo(int NoPrestamo)
@@ -156,6 +143,23 @@ namespace Prestamos.Repositorios
             
 
             return valor;
+        }
+
+
+        public List<Pago> CuotasXPagar(int prestamoID)
+        {
+            var query = new List<Pago>();
+
+            using (var context = new PrestamosEntities())
+            {
+                query = (from p in context.Pago
+                         join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
+                         where pp.NoPrestamo == prestamoID && p.Pagado == false
+                         orderby p.Cuota ascending
+                         select p).ToList();
+            }
+
+            return query;
         }
     }
 }

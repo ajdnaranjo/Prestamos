@@ -68,6 +68,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MPrestamos.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MPrestamos1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MPrestamos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pago.cs">
       <DependentUpon>MPrestamos.tt</DependentUpon>
     </Compile>
@@ -101,6 +106,7 @@
     <None Include="MPrestamos.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MPrestamos.edmx</DependentUpon>
+      <LastGenOutput>MPrestamos1.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
