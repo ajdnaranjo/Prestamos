@@ -176,13 +176,14 @@ namespace Prestamos.Repositorios
         }
 
 
-        public void RecalcularSaldo(int noPrestamo, decimal valor)
+        public void RecalcularSaldo(int noPrestamo)
         {
             using (var context = new PrestamosEntities())
             {
                
                 Prestamo p = context.Prestamo.FirstOrDefault(cl => cl.NoPrestamo == noPrestamo);
                 decimal sumaSaldos = p.Total;
+                decimal sumaS = 0;
                 List<Pago> pagos = (from pa in context.Pago
                              join pp in context.PrestamoPago on pa.PrestamoPagoID equals pp.PrestamoPagoID
                              where pp.NoPrestamo == p.NoPrestamo
@@ -198,10 +199,14 @@ namespace Prestamos.Repositorios
 
                     context.SaveChanges();
 
+                    if (r.Pagado == true)
+                    {
+                        sumaS = sumaS + r.ValorPago;
+                    }
+
                 }
 
-
-                p.Saldo = valor;
+                p.Saldo = p.Total - sumaS;
 
                 context.SaveChanges();
 

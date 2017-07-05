@@ -54,6 +54,7 @@
             this.ValorPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechapago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pagada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -200,6 +201,7 @@
             this.ValorPago,
             this.Saldo,
             this.fechapago,
+            this.FechaReal,
             this.Pagada});
             this.dtgDatos.Location = new System.Drawing.Point(7, 20);
             this.dtgDatos.Name = "dtgDatos";
@@ -270,6 +272,7 @@
             this.Couta.HeaderText = "Cuota";
             this.Couta.Name = "Couta";
             this.Couta.ReadOnly = true;
+            this.Couta.Width = 50;
             // 
             // ValorPago
             // 
@@ -296,6 +299,14 @@
             this.fechapago.Name = "fechapago";
             this.fechapago.ReadOnly = true;
             // 
+            // FechaReal
+            // 
+            this.FechaReal.DataPropertyName = "FechaPagoReal";
+            this.FechaReal.HeaderText = "Fecha Pago Real";
+            this.FechaReal.Name = "FechaReal";
+            this.FechaReal.ReadOnly = true;
+            this.FechaReal.Width = 150;
+            // 
             // Pagada
             // 
             this.Pagada.DataPropertyName = "pagado";
@@ -304,6 +315,7 @@
             this.Pagada.ReadOnly = true;
             this.Pagada.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Pagada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Pagada.Width = 50;
             // 
             // frmConsultaPagos
             // 
@@ -348,6 +360,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorPago;
         private System.Windows.Forms.DataGridViewTextBoxColumn Saldo;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechapago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaReal;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Pagada;
     }
 }

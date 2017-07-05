@@ -37,7 +37,7 @@ namespace Prestamos.Proceso
 
 
                 RepositorioCrearPrestamo repop = new RepositorioCrearPrestamo();
-                var prestamos = repop.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
+                var prestamos = repop.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim())).ToList();
 
                 if (prestamos.Count != 0)
                 {

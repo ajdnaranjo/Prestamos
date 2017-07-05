@@ -80,7 +80,7 @@ namespace Prestamos.Proceso
         {
             var repo = new RepositorioPagos();
             List<Pago> pagos = new List<Pago>();
-            pagos = repo.GetPagosXPrestamoID(noPrestamo);
+            pagos = repo.GetPagosXPrestamoIDPagados(noPrestamo);
 
             dgvPagos.AutoGenerateColumns = false;
             dgvPagos.DataSource = pagos;

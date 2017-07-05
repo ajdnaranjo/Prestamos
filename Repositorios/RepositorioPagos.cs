@@ -1,29 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using Prestamos.Repositorios;
 namespace Prestamos.Repositorios
 {
     [Serializable]
     public class RepositorioPagos
     {
 
-        public void GuardarPago(int idPago, int noPrestamo)
+        public void GuardarPago(Pago pago, int noPrestamo)
         {
            using (var context = new PrestamosEntities())
             {
 
-                Pago p = context.Pago.FirstOrDefault(cl => cl.IDPago == idPago);
+                Pago p = context.Pago.FirstOrDefault(cl => cl.IDPago == pago.IDPago);
 
                 p.Pagado = true;
                 p.FechaPagoReal = DateTime.Now;
+                p.ValorPago = pago.ValorPago;
 
                 Prestamo pp = context.Prestamo.FirstOrDefault(c => c.NoPrestamo == noPrestamo);
 
-                pp.Saldo = p.Saldo;
+                pp.Saldo = pago.Saldo;
                             
                 context.SaveChanges();
 
+                var repo = new RepositorioCrearPrestamo();
+                repo.RecalcularSaldo(noPrestamo);
             }
             
         }
@@ -56,7 +59,7 @@ namespace Prestamos.Repositorios
             {
                 query = (from p in context.Pago
                          join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
-                         where pp.NoPrestamo == prestamoID
+                         where pp.NoPrestamo == prestamoID 
                          orderby p.IDPago ascending
                          select p).ToList();
             }
@@ -156,6 +159,23 @@ namespace Prestamos.Repositorios
                          join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
                          where pp.NoPrestamo == prestamoID && p.Pagado == false
                          orderby p.Cuota ascending
+                         select p).ToList();
+            }
+
+            return query;
+        }
+
+        public List<Pago> GetPagosXPrestamoIDPagados(int prestamoID)
+        {
+
+            var query = new List<Pago>();
+
+            using (var context = new PrestamosEntities())
+            {
+                query = (from p in context.Pago
+                         join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
+                         where pp.NoPrestamo == prestamoID && p.Pagado == true
+                         orderby p.IDPago ascending
                          select p).ToList();
             }
 

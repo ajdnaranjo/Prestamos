@@ -50,12 +50,13 @@ namespace Prestamos.Proceso
             pago.ValorPago = decimal.Parse(txtAbono.Text.Trim());
             pago.Saldo = prestamo.Saldo - pago.ValorPago;
             pago.FechaPago = DateTime.Parse(dtpFechaPago.Text);
-
+            pago.IDPago = int.Parse(cbCuotas.SelectedValue.ToString());
+       
             txtSaldo.Text = pago.Saldo.ToString("N");
 
             try
             {
-                repoPago.GuardarPago(int.Parse(cbCuotas.SelectedValue.ToString()), int.Parse(cbPrestamos.SelectedValue.ToString()));                
+                repoPago.GuardarPago(pago, prestamo.NoPrestamo);                
                 MessageBox.Show("El pago se ha ingresado correctamente.");
                 
                 var prestamop = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
