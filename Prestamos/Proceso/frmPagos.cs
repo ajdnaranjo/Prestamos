@@ -62,7 +62,7 @@ namespace Prestamos.Proceso
 
                 try
                 {
-                    repoPago.GuardarPago(pago, prestamo.NoPrestamo);
+                    repoPago.GuardarPago(pago, prestamo);
                     MessageBox.Show("El pago se ha ingresado correctamente.");
 
                     var prestamop = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));

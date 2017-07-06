@@ -8,25 +8,48 @@ namespace Prestamos.Repositorios
     public class RepositorioPagos
     {
 
-        public void GuardarPago(Pago pago, int noPrestamo)
+        public void GuardarPago(Pago pago, Prestamo prestamo)
         {
            using (var context = new PrestamosEntities())
             {
 
-                Pago p = context.Pago.FirstOrDefault(cl => cl.IDPago == pago.IDPago);
+                var pres = context.Prestamo.FirstOrDefault(cl => cl.NoPrestamo == prestamo.NoPrestamo);
 
-                p.Pagado = true;
-                p.FechaPagoReal = DateTime.Now;
-                p.ValorPago = pago.ValorPago;
+                if (pres.ValorCuota == pago.ValorPago)
+                {
+                    Pago p = context.Pago.FirstOrDefault(x => x.IDPago == pago.IDPago);
+                    p.Pagado = true;
+                    p.FechaPagoReal = DateTime.Now;
 
-                Prestamo pp = context.Prestamo.FirstOrDefault(c => c.NoPrestamo == noPrestamo);
+                    Prestamo pp = context.Prestamo.FirstOrDefault(c => c.NoPrestamo == prestamo.NoPrestamo);
 
-                pp.Saldo = pago.Saldo;
-                            
-                context.SaveChanges();
+                    pp.Saldo = pago.Saldo;
 
-                var repo = new RepositorioCrearPrestamo();
-                repo.RecalcularSaldo(noPrestamo);
+                    context.SaveChanges();
+
+                    //var repo = new RepositorioCrearPrestamo();
+                    //repo.RecalcularSaldo(prestamo.NoPrestamo);
+                }
+                else
+                {
+                    if (pago.ValorPago < pres.ValorCuota)
+                    {
+                        Pago p = context.Pago.FirstOrDefault(x => x.IDPago == pago.IDPago);
+                        p.ValorPago = p.ValorPago - pago.ValorPago;
+                        p.FechaPagoReal = DateTime.Now;
+
+                        Prestamo pp = context.Prestamo.FirstOrDefault(c => c.NoPrestamo == prestamo.NoPrestamo);
+
+                        pp.Saldo = pago.Saldo;
+
+                        context.SaveChanges();
+                    }
+                    else { 
+
+                        
+                    }
+
+                }
             }
             
         }
