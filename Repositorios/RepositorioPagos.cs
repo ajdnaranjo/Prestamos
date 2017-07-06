@@ -231,8 +231,11 @@ namespace Prestamos.Repositorios
             {
 
                 Pago pago = context.Pago.Where(x => x.IDPago == idPago).FirstOrDefault();
-
                 pago.Pagado = false;
+
+                PagoCuota pagoCuota = context.PagoCuota.FirstOrDefault(x => x.IDPago == idPago);
+                context.PagoCuota.Remove(pagoCuota);
+
                 context.SaveChanges();
 
             }
@@ -299,8 +302,25 @@ namespace Prestamos.Repositorios
                 query = (from p in context.Pago
                          join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
                          where pp.NoPrestamo == prestamoID && p.Pagado == true
-                         orderby p.IDPago ascending
+                         orderby p.Cuota, p.IDPago ascending
                          select p).ToList();
+            }
+
+            return query;
+        }
+
+        public List<PagoCuota> GetPagosCuotasXPrestamoID(int prestamoID)
+        {
+
+            var query = new List<PagoCuota>();
+
+            using (var context = new PrestamosEntities())
+            {
+                query = (from p in context.Pago
+                         join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
+                         join pc in context.PagoCuota on p.IDPago equals pc.IDPago
+                         where pp.NoPrestamo == prestamoID                          
+                         select pc).ToList();
             }
 
             return query;

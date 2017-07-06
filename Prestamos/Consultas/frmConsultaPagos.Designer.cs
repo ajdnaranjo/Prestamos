@@ -44,11 +44,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtgDatos = new System.Windows.Forms.DataGridView();
-            this.cbNoPrestamo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.idpago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Couta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechapago = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +51,11 @@
             this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pagada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cbNoPrestamo = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatos)).BeginInit();
@@ -212,56 +212,6 @@
             this.dtgDatos.Size = new System.Drawing.Size(595, 218);
             this.dtgDatos.TabIndex = 0;
             // 
-            // cbNoPrestamo
-            // 
-            this.cbNoPrestamo.DisplayMember = "NoPrestamo";
-            this.cbNoPrestamo.FormattingEnabled = true;
-            this.cbNoPrestamo.Location = new System.Drawing.Point(98, 45);
-            this.cbNoPrestamo.Name = "cbNoPrestamo";
-            this.cbNoPrestamo.Size = new System.Drawing.Size(100, 21);
-            this.cbNoPrestamo.TabIndex = 3;
-            this.cbNoPrestamo.ValueMember = "NoPrestamo";
-            this.cbNoPrestamo.SelectedValueChanged += new System.EventHandler(this.cbNoPrestamo_SelectedValueChanged);
-            this.cbNoPrestamo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNoPrestamo_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "No prestamo:";
-            // 
-            // txtDocumento
-            // 
-            this.txtDocumento.Location = new System.Drawing.Point(98, 20);
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(100, 20);
-            this.txtDocumento.TabIndex = 1;
-            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
-            this.txtDocumento.Leave += new System.EventHandler(this.txtDocumento_Leave);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Documento:";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(13, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(630, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Consulta pagos";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // idpago
             // 
             this.idpago.DataPropertyName = "idpago";
@@ -320,6 +270,56 @@
             this.Pagada.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Pagada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Pagada.Width = 50;
+            // 
+            // cbNoPrestamo
+            // 
+            this.cbNoPrestamo.DisplayMember = "NoPrestamo";
+            this.cbNoPrestamo.FormattingEnabled = true;
+            this.cbNoPrestamo.Location = new System.Drawing.Point(98, 45);
+            this.cbNoPrestamo.Name = "cbNoPrestamo";
+            this.cbNoPrestamo.Size = new System.Drawing.Size(100, 21);
+            this.cbNoPrestamo.TabIndex = 3;
+            this.cbNoPrestamo.ValueMember = "NoPrestamo";
+            this.cbNoPrestamo.SelectedValueChanged += new System.EventHandler(this.cbNoPrestamo_SelectedValueChanged);
+            this.cbNoPrestamo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNoPrestamo_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "No prestamo:";
+            // 
+            // txtDocumento
+            // 
+            this.txtDocumento.Location = new System.Drawing.Point(98, 20);
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(100, 20);
+            this.txtDocumento.TabIndex = 1;
+            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
+            this.txtDocumento.Leave += new System.EventHandler(this.txtDocumento_Leave);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Documento:";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(13, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(630, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Consulta pagos";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmConsultaPagos
             // 

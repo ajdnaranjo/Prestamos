@@ -50,10 +50,11 @@ namespace Prestamos.Consultas
 
                     var repop = new RepositorioPagos();
                     var pagos = repop.GetPagosXPrestamoID(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
-                    var pagados = repop.GetPagosXPrestamoIDPagados(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
+                    var pagados = repop.GetPagosCuotasXPrestamoID(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
 
-                    txtTotalAbonos.Text = pagados.Sum(x => x.ValorPago).ToString("N");
-                    txtSaldoPendiente.Text = prestamo.Saldo.ToString("N");
+                    var sumaAbonos = pagados.Sum(x => x.Valor);
+                    txtTotalAbonos.Text = sumaAbonos.ToString("N");
+                    txtSaldoPendiente.Text = (prestamo.Total - sumaAbonos).ToString("N");
 
                     dtgDatos.AutoGenerateColumns = false;
                     dtgDatos.Columns["valorpago"].DefaultCellStyle.Format = "N";

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestamos", "Prestamos\Pres
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestamos.Repositorios", "Repositorios\Prestamos.Repositorios.csproj", "{31D3874A-DA81-4E9A-A912-C879D2D134ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prestamos.Modelos", "Prestamos.Modelos\Prestamos.Modelos.csproj", "{0A582A41-7054-4E18-B021-4F6443E60CB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{31D3874A-DA81-4E9A-A912-C879D2D134ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31D3874A-DA81-4E9A-A912-C879D2D134ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31D3874A-DA81-4E9A-A912-C879D2D134ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A582A41-7054-4E18-B021-4F6443E60CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A582A41-7054-4E18-B021-4F6443E60CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A582A41-7054-4E18-B021-4F6443E60CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A582A41-7054-4E18-B021-4F6443E60CB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
