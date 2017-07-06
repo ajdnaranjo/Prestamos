@@ -22,7 +22,7 @@ namespace Prestamos.Repositorios
         public int PrestamoPagoID { get; set; }
         public int NoPrestamo { get; set; }
     
-        public virtual ICollection<Pago> Pago { get; set; }
         public virtual Prestamo Prestamo { get; set; }
+        public virtual ICollection<Pago> Pago { get; set; }
     }
 }

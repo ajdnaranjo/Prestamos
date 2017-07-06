@@ -12,20 +12,13 @@ namespace Prestamos.Repositorios
     using System;
     using System.Collections.Generic;
     
-    public partial class Cliente
+    public partial class PagoCuota
     {
-        public Cliente()
-        {
-            this.Prestamo = new HashSet<Prestamo>();
-        }
+        public int IDPagoCuota { get; set; }
+        public int IDPago { get; set; }
+        public decimal Valor { get; set; }
+        public System.DateTime FechaPago { get; set; }
     
-        public long Documento { get; set; }
-        public string Nombre { get; set; }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
-        public string Celular { get; set; }
-        public bool Estado { get; set; }
-    
-        public virtual ICollection<Prestamo> Prestamo { get; set; }
+        public virtual Pago Pago { get; set; }
     }
 }

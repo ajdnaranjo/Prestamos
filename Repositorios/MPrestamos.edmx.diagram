@@ -6,13 +6,16 @@
     <edmx:Diagrams>
       <Diagram DiagramId="c47a88cf387e44b78988d166cb307570" Name="Diagrama1" ZoomLevel="86">
         <EntityTypeShape EntityType="PrestamosModel.FormasPago" Width="1.5" PointX="7.625" PointY="7.75" />
-        <EntityTypeShape EntityType="PrestamosModel.Pago" Width="1.5" PointX="10.691108140484946" PointY="29.913006572943651" />
         <EntityTypeShape EntityType="PrestamosModel.PrestamoPago" Width="1.5" PointX="4.856566481691118" PointY="14.933364457885439" />
-        <AssociationConnector Association="PrestamosModel.FK_Pago_PrestamoPago" />
         <EntityTypeShape EntityType="PrestamosModel.Cliente" Width="1.5" PointX="6.3650177206681189" PointY="21.126526767912566" />
         <EntityTypeShape EntityType="PrestamosModel.Prestamo" Width="1.5" PointX="9.76760258794185" PointY="12.89615087811656" />
         <AssociationConnector Association="PrestamosModel.FK_Prestamo_FormasPago" />
         <AssociationConnector Association="PrestamosModel.FK_PrestamoPago_Prestamo" />
+        <EntityTypeShape EntityType="PrestamosModel.PagoCuota" Width="1.5" PointX="13" PointY="30.375" />
+        <AssociationConnector Association="PrestamosModel.FK_Prestamo_Cliente" />
+        <EntityTypeShape EntityType="PrestamosModel.Pago" Width="1.5" PointX="7.125" PointY="14.375" />
+        <AssociationConnector Association="PrestamosModel.FK_Pago_PrestamoPago" />
+        <AssociationConnector Association="PrestamosModel.FK_PagoCuota_Pago" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

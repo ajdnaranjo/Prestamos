@@ -76,6 +76,9 @@
     <Compile Include="Pago.cs">
       <DependentUpon>MPrestamos.tt</DependentUpon>
     </Compile>
+    <Compile Include="PagoCuota.cs">
+      <DependentUpon>MPrestamos.tt</DependentUpon>
+    </Compile>
     <Compile Include="Prestamo.cs">
       <DependentUpon>MPrestamos.tt</DependentUpon>
     </Compile>

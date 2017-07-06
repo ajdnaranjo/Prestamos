@@ -34,5 +34,6 @@ namespace Prestamos.Repositorios
     
         public virtual FormasPago FormasPago { get; set; }
         public virtual ICollection<PrestamoPago> PrestamoPago { get; set; }
+        public virtual Cliente Cliente { get; set; }
     }
 }

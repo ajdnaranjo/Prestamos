@@ -29,10 +29,11 @@ namespace Prestamos.Repositorios
         }
     
         public DbSet<FormasPago> FormasPago { get; set; }
-        public DbSet<Pago> Pago { get; set; }
         public DbSet<PrestamoPago> PrestamoPago { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Prestamo> Prestamo { get; set; }
+        public DbSet<PagoCuota> PagoCuota { get; set; }
+        public DbSet<Pago> Pago { get; set; }
     
         public virtual ObjectResult<Nullable<decimal>> usp_SelectPorCobrar(Nullable<System.DateTime> fechaIni, Nullable<System.DateTime> fechaFinal)
         {

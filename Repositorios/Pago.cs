@@ -14,15 +14,20 @@ namespace Prestamos.Repositorios
     
     public partial class Pago
     {
+        public Pago()
+        {
+            this.PagoCuota = new HashSet<PagoCuota>();
+        }
+    
         public int IDPago { get; set; }
         public int PrestamoPagoID { get; set; }
+        public Nullable<int> Cuota { get; set; }
         public decimal ValorPago { get; set; }
         public decimal Saldo { get; set; }
         public Nullable<System.DateTime> FechaPago { get; set; }
-        public Nullable<int> Cuota { get; set; }
         public Nullable<bool> Pagado { get; set; }
-        public Nullable<System.DateTime> FechaPagoReal { get; set; }
     
         public virtual PrestamoPago PrestamoPago { get; set; }
+        public virtual ICollection<PagoCuota> PagoCuota { get; set; }
     }
 }

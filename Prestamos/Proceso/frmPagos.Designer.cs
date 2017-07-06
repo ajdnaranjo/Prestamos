@@ -96,6 +96,8 @@
             this.cbCuotas.Name = "cbCuotas";
             this.cbCuotas.Size = new System.Drawing.Size(100, 21);
             this.cbCuotas.TabIndex = 16;
+
+            this.cbCuotas.SelectedValueChanged += new System.EventHandler(this.cbCuotas_SelectedValueChanged);
             // 
             // label10
             // 

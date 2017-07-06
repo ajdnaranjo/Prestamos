@@ -73,7 +73,7 @@ namespace Prestamos.Proceso
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ha ocurrido un error, intente nuevamente.");
+                    MessageBox.Show("Ha ocurrido un error, intente nuevamente. " + ex);
                 }
 
             }
@@ -211,6 +211,24 @@ namespace Prestamos.Proceso
                     var cliente = repo.ClienteXDocumento(long.Parse(row.Cells[0].Value.ToString()));
                     txtDocumento.Text = cliente.Documento.ToString();
                     txtDocumento.Focus();
+                }
+            }
+        }
+
+   
+
+        private void cbCuotas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbCuotas.SelectedItem != null && cbCuotas.SelectedValue != null)
+            {
+                if (cbCuotas.SelectedItem.ToString() != "Selccionar")
+                {
+                    var repo = new RepositorioPagos();
+                    var pagos = repo.GetPagosXPrestamoID(int.Parse(cbPrestamos.SelectedValue.ToString()));
+
+                    var pago = pagos.Where(x => x.IDPago == int.Parse(cbCuotas.SelectedValue.ToString())).FirstOrDefault();
+
+                    txtVlrCuota.Text = pago.ValorPago.ToString("N");
                 }
             }
         }

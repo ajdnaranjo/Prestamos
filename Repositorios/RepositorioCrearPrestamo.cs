@@ -154,11 +154,15 @@ namespace Prestamos.Repositorios
                 foreach (PrestamoPago pp in pPagos)
                 {
                     Pago pago = context.Pago.Where(x => x.PrestamoPagoID == pp.PrestamoPagoID).SingleOrDefault();
+                    PagoCuota pagoCuota = context.PagoCuota.Where(x => x.IDPago == pago.IDPago).SingleOrDefault();
 
                     if (pago != null)
                     {
-                        context.Pago.Remove(pago);
-                        context.SaveChanges();
+                        context.Pago.Remove(pago);                       
+                    }
+                    if (pagoCuota != null)
+                    {
+                        context.PagoCuota.Remove(pagoCuota);
                     }
 
                     context.PrestamoPago.Remove(pp);
