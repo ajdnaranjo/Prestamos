@@ -89,7 +89,7 @@ namespace Prestamos.Proceso
                     var repoPago = new RepositorioPagos();
                     var prestamo = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
                     txtSaldo.Text = prestamo.Saldo.ToString("N");
-                    txtVlrCuota.Text = prestamo.ValorCuota.ToString("N");
+                    //txtVlrCuota.Text = prestamo.ValorCuota.ToString("N");
 
                     List<Pago> cuotas = repoPago.CuotasXPagar(int.Parse(cbPrestamos.SelectedValue.ToString()));
 
@@ -137,14 +137,11 @@ namespace Prestamos.Proceso
             if (txtAbono.Text.Trim() != "")
             {
                 decimal valor = decimal.Parse(txtAbono.Text.Trim());
-                txtAbono.Text = valor.ToString("N");
+                txtAbono.Text = valor.ToString("N");               
 
-                var repo = new RepositorioCrearPrestamo();
-                var prestamo = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
-
-                if (decimal.Parse(txtAbono.Text) < prestamo.ValorCuota)
+                if (decimal.Parse(txtAbono.Text) < decimal.Parse(txtVlrCuota.Text))
                 {
-                    MessageBox.Show(string.Format("El valor del abono es menor al valor de la cuota a pagar. Valor cuota: {0}", prestamo.ValorCuota.ToString("N")));
+                    MessageBox.Show(string.Format("El valor del abono es menor al valor de la cuota a pagar. Valor cuota: {0}", decimal.Parse(txtVlrCuota.Text).ToString("N")));
                 }
               
             }
@@ -196,8 +193,6 @@ namespace Prestamos.Proceso
     
         }
 
-       
-
         private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = dgvClientes.CurrentRow;
@@ -214,8 +209,6 @@ namespace Prestamos.Proceso
                 }
             }
         }
-
-   
 
         private void cbCuotas_SelectedValueChanged(object sender, EventArgs e)
         {

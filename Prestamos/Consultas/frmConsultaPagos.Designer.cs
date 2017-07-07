@@ -30,6 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -174,7 +176,7 @@
             this.txtValorTotal.Location = new System.Drawing.Point(296, 72);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.ReadOnly = true;
-            this.txtValorTotal.Size = new System.Drawing.Size(121, 20);
+            this.txtValorTotal.Size = new System.Drawing.Size(100, 20);
             this.txtValorTotal.TabIndex = 8;
             // 
             // label5
@@ -292,6 +294,9 @@
             // fechapago
             // 
             this.fechapago.DataPropertyName = "FechaPago";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.fechapago.DefaultCellStyle = dataGridViewCellStyle1;
             this.fechapago.HeaderText = "Pago al día";
             this.fechapago.Name = "fechapago";
             this.fechapago.ReadOnly = true;
@@ -299,8 +304,8 @@
             // ValorPago
             // 
             this.ValorPago.DataPropertyName = "valorpago";
-            dataGridViewCellStyle1.Format = "string.Format(\"N\")";
-            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "string.Format(\"N\")";
+            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle2;
             this.ValorPago.HeaderText = "Valor a pagar";
             this.ValorPago.Name = "ValorPago";
             this.ValorPago.ReadOnly = true;
@@ -316,8 +321,8 @@
             // Saldo
             // 
             this.Saldo.DataPropertyName = "saldo";
-            dataGridViewCellStyle2.Format = "0.00##";
-            this.Saldo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Format = "0.00##";
+            this.Saldo.DefaultCellStyle = dataGridViewCellStyle3;
             this.Saldo.HeaderText = "Saldo";
             this.Saldo.Name = "Saldo";
             this.Saldo.ReadOnly = true;
@@ -326,6 +331,9 @@
             // FechaReal
             // 
             this.FechaReal.DataPropertyName = "FechaPagoReal";
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.FechaReal.DefaultCellStyle = dataGridViewCellStyle4;
             this.FechaReal.HeaderText = "Fecha Abono";
             this.FechaReal.Name = "FechaReal";
             this.FechaReal.ReadOnly = true;

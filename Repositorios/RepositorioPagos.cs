@@ -154,8 +154,19 @@ namespace Prestamos.Repositorios
                     }
 
                 }
-            }
-            
+
+                var saldoCuotas = (from p in context.Pago
+                             join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
+                             join pc in context.PagoCuota on p.IDPago equals pc.IDPago
+                             where pp.NoPrestamo == prestamo.NoPrestamo                              
+                             select pc).ToList();
+
+                var saldo = saldoCuotas.Sum(x => x.Valor);
+
+                pres.Saldo = pres.Total - saldo;
+                context.SaveChanges();
+            }        
+
         }
 
         private int NumeroCuotaXNoPrestamo(int NoPrestamo)
@@ -206,7 +217,7 @@ namespace Prestamos.Repositorios
                          join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
                          join pc in context.PagoCuota on p.IDPago equals pc.IDPago
                          where pp.NoPrestamo == prestamoID
-                         orderby p.Cuota ascending
+                         orderby p.Cuota, p.IDPago ascending
                          select new PagosDTO {
                              IDPago = p.IDPago,
                              PrestamoPagoID = pp.PrestamoPagoID,
