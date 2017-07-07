@@ -150,6 +150,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Prestamos.Modelos\Prestamos.Modelos.csproj">
+      <Project>{0a582a41-7054-4e18-b021-4f6443e60cb4}</Project>
+      <Name>Prestamos.Modelos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repositorios\Prestamos.Repositorios.csproj">
       <Project>{31d3874a-da81-4e9a-a912-c879d2d134ed}</Project>
       <Name>Prestamos.Repositorios</Name>

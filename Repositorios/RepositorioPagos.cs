@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using Prestamos.Repositorios;
+using Prestamos.Modelos;
+
+
 namespace Prestamos.Repositorios
 {
     [Serializable]
@@ -191,6 +194,34 @@ namespace Prestamos.Repositorios
             return query;
         }
 
+
+        public List<PagosDTO> ConsultaPagos(int prestamoID)
+        {
+
+            var query = new List<PagosDTO>();
+
+            using (var context = new PrestamosEntities())
+            {
+                query = (from p in context.Pago
+                         join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
+                         join pc in context.PagoCuota on p.IDPago equals pc.IDPago
+                         where pp.NoPrestamo == prestamoID
+                         orderby p.Cuota ascending
+                         select new PagosDTO {
+                             IDPago = p.IDPago,
+                             PrestamoPagoID = pp.PrestamoPagoID,
+                             Cuota = p.Cuota,
+                             ValorPago = p.ValorPago,
+                             Saldo = p.Saldo,
+                             FechaPago = p.FechaPago,
+                             Pagado = p.Pagado,
+                             Valor = pc.Valor,
+                             FechaPagoReal = pc.FechaPago
+                         }).ToList();
+            }
+
+            return query;
+        }
 
         public decimal TotalPagosxDia(DateTime fechaInicial, DateTime fechaFinal)
         {

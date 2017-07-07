@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-
+using Prestamos.Modelos;
 
 namespace Prestamos.Consultas
 {
@@ -49,7 +49,7 @@ namespace Prestamos.Consultas
                     txtValorTotal.Text = prestamo.Total.ToString("N");
 
                     var repop = new RepositorioPagos();
-                    var pagos = repop.GetPagosXPrestamoID(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
+                    var pagos = repop.ConsultaPagos(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
                     var pagados = repop.GetPagosCuotasXPrestamoID(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
 
                     var sumaAbonos = pagados.Sum(x => x.Valor);
