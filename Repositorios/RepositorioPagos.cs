@@ -25,7 +25,7 @@ namespace Prestamos.Repositorios
                     pc = new PagoCuota();
                     pc.IDPago = pago.IDPago;
                     pc.Valor = pago.ValorPago;
-                    pc.FechaPago = DateTime.Now;
+                    pc.FechaPago = pago.FechaPago;
                     context.PagoCuota.Add(pc);
 
                     var pp = new PrestamoPago();
@@ -41,7 +41,7 @@ namespace Prestamos.Repositorios
                     p.Cuota = pag.Cuota;
                     p.ValorPago = pag.ValorPago - pago.ValorPago;
                     p.Saldo = pag.Saldo - pago.ValorPago;
-                    p.FechaPago = DateTime.Now;
+                    p.FechaPago = pag.FechaPago;
                     p.Pagado = false;
                     context.Pago.Add(p);
 
@@ -87,7 +87,7 @@ namespace Prestamos.Repositorios
                                         pc = new PagoCuota();
                                         pc.IDPago = r.IDPago;
                                         pc.Valor = splitPago;
-                                        pc.FechaPago = DateTime.Now;
+                                        pc.FechaPago = pago.FechaPago;
                                         context.PagoCuota.Add(pc);
 
                                         var pp = new PrestamoPago();
@@ -103,7 +103,7 @@ namespace Prestamos.Repositorios
                                         p.Cuota = r.Cuota;
                                         p.ValorPago = r.ValorPago - splitPago;
                                         p.Saldo = r.Saldo - splitPago;
-                                        p.FechaPago = DateTime.Now;
+                                        p.FechaPago = r.FechaPago;
                                         p.Pagado = false;
                                         context.Pago.Add(p);
 
@@ -121,7 +121,7 @@ namespace Prestamos.Repositorios
                                         pc = new PagoCuota();
                                         pc.IDPago = r.IDPago;
                                         pc.Valor = r.ValorPago;
-                                        pc.FechaPago = DateTime.Now;
+                                        pc.FechaPago = pago.FechaPago;
                                         context.PagoCuota.Add(pc);
 
                                         Pago pg = context.Pago.FirstOrDefault(x => x.IDPago == r.IDPago);

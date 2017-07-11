@@ -32,8 +32,8 @@
           <Property Name="Cuota" Type="int" />
           <Property Name="ValorPago" Type="money" Nullable="false" />
           <Property Name="Saldo" Type="money" Nullable="false" />
-          <Property Name="FechaPago" Type="datetime" />
-          <Property Name="Pagado" Type="bit" />
+          <Property Name="FechaPago" Type="datetime" Nullable="false" />
+          <Property Name="Pagado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PagoCuota">
           <Key>
@@ -304,8 +304,8 @@
           <Property Name="Cuota" Type="Int32" />
           <Property Name="ValorPago" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="FechaPago" Type="DateTime" Precision="3" />
-          <Property Name="Pagado" Type="Boolean" />
+          <Property Name="FechaPago" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Pagado" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="PrestamoPago" Relationship="PrestamosModel.FK_Pago_PrestamoPago" FromRole="Pago" ToRole="PrestamoPago" />
           <NavigationProperty Name="PagoCuota" Relationship="PrestamosModel.FK_PagoCuota_Pago" FromRole="Pago" ToRole="PagoCuota" />
         </EntityType>
