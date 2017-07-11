@@ -16,8 +16,8 @@ namespace Prestamos.Modelos
         public decimal Saldo { get; set; }
         public DateTime? FechaPago { get; set; }
         public bool? Pagado { get; set; }
-        public decimal Valor { get; set; }
-        public DateTime FechaPagoReal { get; set; }
+        public decimal? Valor { get; set; }
+        public DateTime? FechaPagoReal { get; set; }
 
 
     }

@@ -212,13 +212,14 @@ namespace Prestamos.Repositorios
             var query = new List<PagosDTO>();
 
             using (var context = new PrestamosEntities())
-            {
+            {                
                 query = (from p in context.Pago
                          join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
-                         join pc in context.PagoCuota on p.IDPago equals pc.IDPago
+                         from pc in context.PagoCuota.Where(x => x.IDPago == p.IDPago).DefaultIfEmpty()
                          where pp.NoPrestamo == prestamoID
                          orderby p.Cuota, p.IDPago ascending
-                         select new PagosDTO {
+                         select new PagosDTO
+                         {
                              IDPago = p.IDPago,
                              PrestamoPagoID = pp.PrestamoPagoID,
                              Cuota = p.Cuota,
