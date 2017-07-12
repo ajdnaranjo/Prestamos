@@ -37,26 +37,26 @@ namespace Prestamos.Repositorios
 
                     int id = pp.PrestamoPagoID;
 
-                    var repo = new RepositorioCrearPrestamo();
-                    var repop = new RepositorioPagos();
-                    var prestamo = new Prestamo();
-                    var pagados = repop.GetPagosCuotasXPrestamoID(pres.NoPrestamo);
-                    var sumaAbonos = pagados.Sum(x => x.Valor);
-                    prestamo = repo.GetPrestamosXID(pres.NoPrestamo);
+                    //var repo = new RepositorioCrearPrestamo();
+                    //var repop = new RepositorioPagos();
+                    //var prestamo = new Prestamo();
+                   // var pagados = repop.GetPagosCuotasXPrestamoID(pres.NoPrestamo);
+                    //var sumaAbonos = pagados.Sum(x => x.Valor);
+                   // prestamo = repo.GetPrestamosXID(pres.NoPrestamo);
 
                     var p = new Pago();
                     p = new Pago();
                     p.PrestamoPagoID = id;
                     p.Cuota = pag.Cuota;
                     p.ValorPago = pag.ValorPago - pago.ValorPago;
-                    p.Saldo = pag.Saldo - pago.ValorPago;
+                    p.Saldo = pag.Saldo + pago.ValorPago;
                     p.FechaPago = pag.FechaPago;
                     p.Pagado = false;
                     context.Pago.Add(p);
 
                     Pago pg = context.Pago.FirstOrDefault(x => x.IDPago == pago.IDPago);
                     pg.Pagado = true;
-                    pg.Saldo = prestamo.Total - sumaAbonos;
+                    pg.Saldo = pag.Saldo - pago.ValorPago;
 
                     context.SaveChanges();
                 }
@@ -108,26 +108,26 @@ namespace Prestamos.Repositorios
 
                                         context.SaveChanges();
 
-                                        var repo = new RepositorioCrearPrestamo();
+                                       /* var repo = new RepositorioCrearPrestamo();
                                         var repop = new RepositorioPagos();
                                         var prestamo = new Prestamo();
                                         var pagados = repop.GetPagosCuotasXPrestamoID(pres.NoPrestamo);
                                         var sumaAbonos = pagados.Sum(x => x.Valor);
                                         prestamo = repo.GetPrestamosXID(pres.NoPrestamo);
-
+                                        */
                                         var p = new Pago();
                                         p = new Pago();
                                         p.PrestamoPagoID = id;
                                         p.Cuota = r.Cuota;
                                         p.ValorPago = r.ValorPago - splitPago;
-                                        p.Saldo = pag.Saldo - pago.ValorPago;
+                                        p.Saldo = pag.Saldo + pago.ValorPago;
                                         p.FechaPago = r.FechaPago;
                                         p.Pagado = false;
                                         context.Pago.Add(p);
 
                                         Pago pg = context.Pago.FirstOrDefault(x => x.IDPago == r.IDPago);
                                         pg.Pagado = true;
-                                        pg.Saldo = prestamo.Total - sumaAbonos;
+                                        pg.Saldo = pag.Saldo - pago.ValorPago;
 
                                         context.SaveChanges();
 
