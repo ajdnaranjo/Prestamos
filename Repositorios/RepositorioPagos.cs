@@ -11,12 +11,12 @@ namespace Prestamos.Repositorios
     public class RepositorioPagos
     {
 
-        public void GuardarPago(Pago pago, Prestamo prestamo)
+        public void GuardarPago(Pago pago, Prestamo presta)
         {
            using (var context = new PrestamosEntities())
             {
 
-                var pres = context.Prestamo.FirstOrDefault(cl => cl.NoPrestamo == prestamo.NoPrestamo);
+                var pres = context.Prestamo.FirstOrDefault(cl => cl.NoPrestamo == presta.NoPrestamo);
                 var pag = context.Pago.FirstOrDefault(x => x.IDPago == pago.IDPago);
 
                 if (pago.ValorPago < pag.ValorPago)
@@ -30,10 +30,19 @@ namespace Prestamos.Repositorios
 
                     var pp = new PrestamoPago();
                     pp = new PrestamoPago();
-                    pp.NoPrestamo = prestamo.NoPrestamo;
-                    context.PrestamoPago.Add(pp);                    
+                    pp.NoPrestamo = presta.NoPrestamo;
+                    context.PrestamoPago.Add(pp);
+
+                    context.SaveChanges();
 
                     int id = pp.PrestamoPagoID;
+
+                    var repo = new RepositorioCrearPrestamo();
+                    var repop = new RepositorioPagos();
+                    var prestamo = new Prestamo();
+                    var pagados = repop.GetPagosCuotasXPrestamoID(pres.NoPrestamo);
+                    var sumaAbonos = pagados.Sum(x => x.Valor);
+                    prestamo = repo.GetPrestamosXID(pres.NoPrestamo);
 
                     var p = new Pago();
                     p = new Pago();
@@ -46,8 +55,8 @@ namespace Prestamos.Repositorios
                     context.Pago.Add(p);
 
                     Pago pg = context.Pago.FirstOrDefault(x => x.IDPago == pago.IDPago);
-
                     pg.Pagado = true;
+                    pg.Saldo = prestamo.Total - sumaAbonos;
 
                     context.SaveChanges();
                 }
@@ -59,7 +68,7 @@ namespace Prestamos.Repositorios
 
                         var pagosFaltantes = (from p in context.Pago
                                               join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
-                                              where pp.NoPrestamo == prestamo.NoPrestamo && p.Pagado == false
+                                              where pp.NoPrestamo == presta.NoPrestamo && p.Pagado == false
                                               orderby p.Cuota
                                               select p).ToList();
 
@@ -92,23 +101,33 @@ namespace Prestamos.Repositorios
 
                                         var pp = new PrestamoPago();
                                         pp = new PrestamoPago();
-                                        pp.NoPrestamo = prestamo.NoPrestamo;
+                                        pp.NoPrestamo = presta.NoPrestamo;
                                         context.PrestamoPago.Add(pp);
 
                                         int id = pp.PrestamoPagoID;
+
+                                        context.SaveChanges();
+
+                                        var repo = new RepositorioCrearPrestamo();
+                                        var repop = new RepositorioPagos();
+                                        var prestamo = new Prestamo();
+                                        var pagados = repop.GetPagosCuotasXPrestamoID(pres.NoPrestamo);
+                                        var sumaAbonos = pagados.Sum(x => x.Valor);
+                                        prestamo = repo.GetPrestamosXID(pres.NoPrestamo);
 
                                         var p = new Pago();
                                         p = new Pago();
                                         p.PrestamoPagoID = id;
                                         p.Cuota = r.Cuota;
                                         p.ValorPago = r.ValorPago - splitPago;
-                                        p.Saldo = r.Saldo - splitPago;
+                                        p.Saldo = pag.Saldo - pago.ValorPago;
                                         p.FechaPago = r.FechaPago;
                                         p.Pagado = false;
                                         context.Pago.Add(p);
 
                                         Pago pg = context.Pago.FirstOrDefault(x => x.IDPago == r.IDPago);
                                         pg.Pagado = true;
+                                        pg.Saldo = prestamo.Total - sumaAbonos;
 
                                         context.SaveChanges();
 
@@ -158,7 +177,7 @@ namespace Prestamos.Repositorios
                 var saldoCuotas = (from p in context.Pago
                              join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
                              join pc in context.PagoCuota on p.IDPago equals pc.IDPago
-                             where pp.NoPrestamo == prestamo.NoPrestamo                              
+                             where pp.NoPrestamo == presta.NoPrestamo                              
                              select pc).ToList();
 
                 var saldo = saldoCuotas.Sum(x => x.Valor);
