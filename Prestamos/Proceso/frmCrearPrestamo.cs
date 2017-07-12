@@ -29,7 +29,6 @@ namespace Prestamos.Proceso
             cbFormaPago.DataSource = repo.GetFormasPago();           
         }
        
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (ValidarCampos() == true)
@@ -53,9 +52,21 @@ namespace Prestamos.Proceso
 
                 try
                 {
-
+                    var repoCliente = new RepositorioClientes();
                     RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
-                    repo.CrearPresatamo(prestamo);
+
+
+                    var cliente = repoCliente.ClienteXDocumento(prestamo.Documento);                    
+
+                    if (cliente != null && cliente.Estado == true)
+                    {
+
+                        repo.CrearPresatamo(prestamo);
+
+                    }
+                    else {
+                        MessageBox.Show("El cliente no existe o se encuentra inactivo.");
+                    }
 
                     MessageBox.Show("Prestamo guardado correctamente.");
 
