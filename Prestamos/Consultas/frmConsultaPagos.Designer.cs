@@ -46,11 +46,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dtgDatos = new System.Windows.Forms.DataGridView();
-            this.cbNoPrestamo = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDocumento = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.idpago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrestamoPagoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Couta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +55,11 @@
             this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pagada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cbNoPrestamo = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDocumento = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDatos)).BeginInit();
@@ -85,14 +85,14 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(649, 348);
+            this.groupBox1.Size = new System.Drawing.Size(662, 477);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // txtEstado
             // 
             this.txtEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstado.Location = new System.Drawing.Point(296, 47);
+            this.txtEstado.Location = new System.Drawing.Point(332, 45);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.ReadOnly = true;
             this.txtEstado.Size = new System.Drawing.Size(100, 20);
@@ -101,7 +101,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(201, 51);
+            this.label4.Location = new System.Drawing.Point(237, 49);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 13);
             this.label4.TabIndex = 16;
@@ -110,7 +110,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(201, 23);
+            this.label8.Location = new System.Drawing.Point(237, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(47, 13);
             this.label8.TabIndex = 15;
@@ -118,7 +118,7 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(296, 20);
+            this.txtNombre.Location = new System.Drawing.Point(332, 18);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
             this.txtNombre.Size = new System.Drawing.Size(324, 20);
@@ -126,7 +126,7 @@
             // 
             // btnNuevo
             // 
-            this.btnNuevo.Location = new System.Drawing.Point(520, 75);
+            this.btnNuevo.Location = new System.Drawing.Point(556, 73);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(100, 23);
             this.btnNuevo.TabIndex = 13;
@@ -156,7 +156,7 @@
             // 
             // txtTotalAbonos
             // 
-            this.txtTotalAbonos.Location = new System.Drawing.Point(520, 47);
+            this.txtTotalAbonos.Location = new System.Drawing.Point(556, 45);
             this.txtTotalAbonos.Name = "txtTotalAbonos";
             this.txtTotalAbonos.ReadOnly = true;
             this.txtTotalAbonos.Size = new System.Drawing.Size(100, 20);
@@ -165,7 +165,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(423, 51);
+            this.label6.Location = new System.Drawing.Point(459, 49);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 13);
             this.label6.TabIndex = 9;
@@ -173,7 +173,7 @@
             // 
             // txtValorTotal
             // 
-            this.txtValorTotal.Location = new System.Drawing.Point(296, 72);
+            this.txtValorTotal.Location = new System.Drawing.Point(332, 70);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.ReadOnly = true;
             this.txtValorTotal.Size = new System.Drawing.Size(100, 20);
@@ -182,7 +182,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(201, 75);
+            this.label5.Location = new System.Drawing.Point(237, 73);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 7;
@@ -191,9 +191,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dtgDatos);
-            this.groupBox2.Location = new System.Drawing.Point(7, 98);
+            this.groupBox2.Location = new System.Drawing.Point(13, 96);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(634, 244);
+            this.groupBox2.Size = new System.Drawing.Size(643, 375);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
@@ -215,58 +215,8 @@
             this.dtgDatos.Location = new System.Drawing.Point(7, 20);
             this.dtgDatos.Name = "dtgDatos";
             this.dtgDatos.ReadOnly = true;
-            this.dtgDatos.Size = new System.Drawing.Size(617, 218);
+            this.dtgDatos.Size = new System.Drawing.Size(630, 339);
             this.dtgDatos.TabIndex = 0;
-            // 
-            // cbNoPrestamo
-            // 
-            this.cbNoPrestamo.DisplayMember = "NoPrestamo";
-            this.cbNoPrestamo.FormattingEnabled = true;
-            this.cbNoPrestamo.Location = new System.Drawing.Point(98, 45);
-            this.cbNoPrestamo.Name = "cbNoPrestamo";
-            this.cbNoPrestamo.Size = new System.Drawing.Size(100, 21);
-            this.cbNoPrestamo.TabIndex = 3;
-            this.cbNoPrestamo.ValueMember = "NoPrestamo";
-            this.cbNoPrestamo.SelectedValueChanged += new System.EventHandler(this.cbNoPrestamo_SelectedValueChanged);
-            this.cbNoPrestamo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNoPrestamo_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 48);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "No prestamo:";
-            // 
-            // txtDocumento
-            // 
-            this.txtDocumento.Location = new System.Drawing.Point(98, 20);
-            this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(100, 20);
-            this.txtDocumento.TabIndex = 1;
-            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
-            this.txtDocumento.Leave += new System.EventHandler(this.txtDocumento_Leave);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Documento:";
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(13, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(630, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Consulta pagos";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // idpago
             // 
@@ -348,11 +298,61 @@
             this.Pagada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Pagada.Width = 50;
             // 
+            // cbNoPrestamo
+            // 
+            this.cbNoPrestamo.DisplayMember = "NoPrestamo";
+            this.cbNoPrestamo.FormattingEnabled = true;
+            this.cbNoPrestamo.Location = new System.Drawing.Point(98, 45);
+            this.cbNoPrestamo.Name = "cbNoPrestamo";
+            this.cbNoPrestamo.Size = new System.Drawing.Size(100, 21);
+            this.cbNoPrestamo.TabIndex = 3;
+            this.cbNoPrestamo.ValueMember = "NoPrestamo";
+            this.cbNoPrestamo.SelectedValueChanged += new System.EventHandler(this.cbNoPrestamo_SelectedValueChanged);
+            this.cbNoPrestamo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNoPrestamo_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 48);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "No prestamo:";
+            // 
+            // txtDocumento
+            // 
+            this.txtDocumento.Location = new System.Drawing.Point(98, 20);
+            this.txtDocumento.Name = "txtDocumento";
+            this.txtDocumento.Size = new System.Drawing.Size(100, 20);
+            this.txtDocumento.TabIndex = 1;
+            this.txtDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDocumento_KeyPress);
+            this.txtDocumento.Leave += new System.EventHandler(this.txtDocumento_Leave);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Documento:";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(13, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(630, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Consulta pagos";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmConsultaPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 384);
+            this.ClientSize = new System.Drawing.Size(686, 520);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmConsultaPagos";
