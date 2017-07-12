@@ -371,5 +371,37 @@ namespace Prestamos.Repositorios
 
             return query;
         }
+
+
+
+        public List<MorososDTO> Morosos()
+        {
+            var query = new List<MorososDTO>();
+            using (var context = new PrestamosEntities())
+            {
+
+                 query = (from p in context.Prestamo
+                          join c in context.Cliente on p.Documento equals c.Documento
+                          join pp in context.PrestamoPago on p.NoPrestamo equals pp.NoPrestamo
+                          join pg in context.Pago on pp.PrestamoPagoID equals pg.PrestamoPagoID
+                          where pg.Pagado == false && pg.FechaPago <= DateTime.Now
+                          select new MorososDTO()
+                          {
+                              Documento = c.Documento,
+                              Nombre = c.Nombre,
+                              NoPrestamo = p.NoPrestamo,
+                              Cuota = pg.Cuota,
+                              FechaPago = pg.FechaPago,
+                              ValorCuota = pg.ValorPago
+                          }
+                          ).ToList();                
+            }
+
+
+            return query;
+        }
+
     }
+
+
 }

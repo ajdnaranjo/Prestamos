@@ -40,6 +40,7 @@
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPrestamosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPagosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.morososToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,7 +99,8 @@
             // 
             this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarPagosToolStripMenuItem,
-            this.movimientoDiarioToolStripMenuItem});
+            this.movimientoDiarioToolStripMenuItem,
+            this.morososToolStripMenuItem});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
@@ -140,6 +142,13 @@
             this.eliminarPagosToolStripMenuItem1.Text = "Eliminar pagos";
             this.eliminarPagosToolStripMenuItem1.Click += new System.EventHandler(this.eliminarPagosToolStripMenuItem1_Click);
             // 
+            // morososToolStripMenuItem
+            // 
+            this.morososToolStripMenuItem.Name = "morososToolStripMenuItem";
+            this.morososToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.morososToolStripMenuItem.Text = "Morosos";
+            this.morososToolStripMenuItem.Click += new System.EventHandler(this.morososToolStripMenuItem_Click);
+            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,5 +185,6 @@
         private System.Windows.Forms.ToolStripMenuItem administraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarPrestamosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem eliminarPagosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem morososToolStripMenuItem;
     }
 }

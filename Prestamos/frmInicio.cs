@@ -69,5 +69,13 @@ namespace Prestamos
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void morososToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consultas.frmMorosos frm = new Consultas.frmMorosos();
+            frm.MdiParent = this;
+            frm.Show();
+
+        }
     }
 }
