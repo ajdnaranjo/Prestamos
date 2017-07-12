@@ -33,7 +33,7 @@
           <Property Name="ValorPago" Type="money" Nullable="false" />
           <Property Name="Saldo" Type="money" Nullable="false" />
           <Property Name="FechaPago" Type="datetime" Nullable="false" />
-          <Property Name="Pagado" Type="bit" Nullable="false" />
+          <Property Name="Pagado" Type="bit" />
         </EntityType>
         <EntityType Name="PagoCuota">
           <Key>
@@ -128,10 +128,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="usp_SelectPorCobrar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="fechaIni" Type="datetime" Mode="In" />
-          <Parameter Name="FechaFinal" Type="datetime" Mode="In" />
-        </Function>
         <EntityContainer Name="PrestamosModelStoreContainer">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormasPago" EntityType="Self.FormasPago" Schema="dbo" store:Type="Tables" />
@@ -167,14 +163,6 @@
         <EntityContainer Name="PrestamosEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="FormasPago" EntityType="PrestamosModel.FormasPago" />
           <EntitySet Name="PrestamoPago" EntityType="PrestamosModel.PrestamoPago" />
-          <FunctionImport Name="usp_SelectPorCobrar" ReturnType="Collection(Decimal)">
-            <Parameter Name="fechaIni" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="GetPorCobrarXFecha" ReturnType="Collection(Decimal)">
-            <Parameter Name="fechaIni" Mode="In" Type="DateTime" />
-            <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
-          </FunctionImport>
           <EntitySet Name="Cliente" EntityType="PrestamosModel.Cliente" />
           <EntitySet Name="Prestamo" EntityType="PrestamosModel.Prestamo" />
           <AssociationSet Name="FK_Prestamo_FormasPago" Association="PrestamosModel.FK_Prestamo_FormasPago">
@@ -305,7 +293,7 @@
           <Property Name="ValorPago" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Saldo" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="FechaPago" Type="DateTime" Precision="3" Nullable="false" />
-          <Property Name="Pagado" Type="Boolean" Nullable="false" />
+          <Property Name="Pagado" Type="Boolean" />
           <NavigationProperty Name="PrestamoPago" Relationship="PrestamosModel.FK_Pago_PrestamoPago" FromRole="Pago" ToRole="PrestamoPago" />
           <NavigationProperty Name="PagoCuota" Relationship="PrestamosModel.FK_PagoCuota_Pago" FromRole="Pago" ToRole="PagoCuota" />
         </EntityType>
@@ -355,8 +343,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_SelectPorCobrar" FunctionName="PrestamosModel.Store.usp_SelectPorCobrar" />
-          <FunctionImportMapping FunctionImportName="GetPorCobrarXFecha" FunctionName="PrestamosModel.Store.usp_SelectPorCobrar" />
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="PrestamosModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
