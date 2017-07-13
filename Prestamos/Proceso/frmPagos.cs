@@ -25,7 +25,11 @@ namespace Prestamos.Proceso
             if (txtDocumento.Text.Trim() != "")
             {
                 RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
+                var repoCliente = new RepositorioClientes();
                 var prestamos = repo.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim())).Where(x => x.Estado == true).ToList();
+                var cliente = repoCliente.ClienteXDocumento(long.Parse(txtDocumento.Text.Trim()));
+
+                txtNombre.Text = cliente.Nombre;
 
                 if (prestamos.Count != 0)
                 {
@@ -42,11 +46,7 @@ namespace Prestamos.Proceso
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (cbCuotas.SelectedItem.ToString() == "Seleccionar")
-            {
-                MessageBox.Show("Debe seleccionar una cuota.");
-            }
-            else
+            if (validarDatos())
             {
                 RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
                 RepositorioPagos repoPago = new RepositorioPagos();
@@ -76,7 +76,24 @@ namespace Prestamos.Proceso
                     MessageBox.Show("Ha ocurrido un error, intente nuevamente. " + ex);
                 }
 
+            }            
+        }
+
+        private bool validarDatos()
+        {
+            bool flag = true;
+            if (cbCuotas.SelectedItem.ToString() == "Seleccionar")
+            {
+                MessageBox.Show("Debe seleccionar una cuota.");
+                return  false;
             }
+            if (txtAbono.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Debe ingresar un valor a pagar.");
+                return false;
+            }
+
+            return flag;
         }
 
         private void cbPrestamos_SelectedValueChanged(object sender, EventArgs e)

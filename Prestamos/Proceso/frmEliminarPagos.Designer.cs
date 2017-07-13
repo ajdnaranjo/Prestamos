@@ -161,14 +161,14 @@
             // 
             // ValorPago
             // 
-            this.ValorPago.DataPropertyName = "valorpago";
+            this.ValorPago.DataPropertyName = "Valor";
             this.ValorPago.HeaderText = "Valor Pago";
             this.ValorPago.Name = "ValorPago";
             this.ValorPago.ReadOnly = true;
             // 
             // Fecha
             // 
-            this.Fecha.DataPropertyName = "fechapago";
+            this.Fecha.DataPropertyName = "FechaPagoReal";
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
@@ -223,6 +223,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Pagada;
         private System.Windows.Forms.DataGridViewLinkColumn eliminar;
-
     }
 }

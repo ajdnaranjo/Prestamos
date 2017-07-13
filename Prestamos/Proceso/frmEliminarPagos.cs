@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Prestamos.Repositorios;
+using Prestamos.Modelos;
 
 namespace Prestamos.Proceso
 {
@@ -79,7 +80,7 @@ namespace Prestamos.Proceso
         private void llenarGrid(int noPrestamo)
         {
             var repo = new RepositorioPagos();
-            List<Pago> pagos = new List<Pago>();
+            List<PagosDTO> pagos = new List<PagosDTO>();
             pagos = repo.GetPagosXPrestamoIDPagados(noPrestamo);
 
             dgvPagos.AutoGenerateColumns = false;
