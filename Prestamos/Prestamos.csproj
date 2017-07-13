@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consultas\frmMorosos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmMorosos.Designer.cs">
+      <DependentUpon>frmMorosos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmMovimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Consultas\frmMorosos.resx">
+      <DependentUpon>frmMorosos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmMovimiento.resx">
       <DependentUpon>frmMovimiento.cs</DependentUpon>
     </EmbeddedResource>

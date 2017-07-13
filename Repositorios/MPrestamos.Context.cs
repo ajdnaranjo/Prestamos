@@ -12,9 +12,6 @@ namespace Prestamos.Repositorios
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
-    using System.Linq;
     
     public partial class PrestamosEntities : DbContext
     {
@@ -34,31 +31,5 @@ namespace Prestamos.Repositorios
         public DbSet<Prestamo> Prestamo { get; set; }
         public DbSet<PagoCuota> PagoCuota { get; set; }
         public DbSet<Pago> Pago { get; set; }
-    
-        public virtual ObjectResult<Nullable<decimal>> usp_SelectPorCobrar(Nullable<System.DateTime> fechaIni, Nullable<System.DateTime> fechaFinal)
-        {
-            var fechaIniParameter = fechaIni.HasValue ?
-                new ObjectParameter("fechaIni", fechaIni) :
-                new ObjectParameter("fechaIni", typeof(System.DateTime));
-    
-            var fechaFinalParameter = fechaFinal.HasValue ?
-                new ObjectParameter("FechaFinal", fechaFinal) :
-                new ObjectParameter("FechaFinal", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("usp_SelectPorCobrar", fechaIniParameter, fechaFinalParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<decimal>> GetPorCobrarXFecha(Nullable<System.DateTime> fechaIni, Nullable<System.DateTime> fechaFinal)
-        {
-            var fechaIniParameter = fechaIni.HasValue ?
-                new ObjectParameter("fechaIni", fechaIni) :
-                new ObjectParameter("fechaIni", typeof(System.DateTime));
-    
-            var fechaFinalParameter = fechaFinal.HasValue ?
-                new ObjectParameter("FechaFinal", fechaFinal) :
-                new ObjectParameter("FechaFinal", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("GetPorCobrarXFecha", fechaIniParameter, fechaFinalParameter);
-        }
     }
 }

@@ -33,30 +33,21 @@ namespace Prestamos.Repositorios
                     pp.NoPrestamo = presta.NoPrestamo;
                     context.PrestamoPago.Add(pp);
 
-                    context.SaveChanges();
-
                     int id = pp.PrestamoPagoID;
-
-                    //var repo = new RepositorioCrearPrestamo();
-                    //var repop = new RepositorioPagos();
-                    //var prestamo = new Prestamo();
-                   // var pagados = repop.GetPagosCuotasXPrestamoID(pres.NoPrestamo);
-                    //var sumaAbonos = pagados.Sum(x => x.Valor);
-                   // prestamo = repo.GetPrestamosXID(pres.NoPrestamo);
 
                     var p = new Pago();
                     p = new Pago();
                     p.PrestamoPagoID = id;
                     p.Cuota = pag.Cuota;
                     p.ValorPago = pag.ValorPago - pago.ValorPago;
-                    p.Saldo = pag.Saldo + pago.ValorPago;
+                    p.Saldo = pag.Saldo;
                     p.FechaPago = pag.FechaPago;
                     p.Pagado = false;
                     context.Pago.Add(p);
 
                     Pago pg = context.Pago.FirstOrDefault(x => x.IDPago == pago.IDPago);
                     pg.Pagado = true;
-                    pg.Saldo = pag.Saldo - pago.ValorPago;
+                    pg.Saldo = pag.Saldo + pago.ValorPago;
 
                     context.SaveChanges();
                 }
@@ -106,28 +97,19 @@ namespace Prestamos.Repositorios
 
                                         int id = pp.PrestamoPagoID;
 
-                                        context.SaveChanges();
-
-                                       /* var repo = new RepositorioCrearPrestamo();
-                                        var repop = new RepositorioPagos();
-                                        var prestamo = new Prestamo();
-                                        var pagados = repop.GetPagosCuotasXPrestamoID(pres.NoPrestamo);
-                                        var sumaAbonos = pagados.Sum(x => x.Valor);
-                                        prestamo = repo.GetPrestamosXID(pres.NoPrestamo);
-                                        */
                                         var p = new Pago();
                                         p = new Pago();
                                         p.PrestamoPagoID = id;
                                         p.Cuota = r.Cuota;
                                         p.ValorPago = r.ValorPago - splitPago;
-                                        p.Saldo = pag.Saldo + pago.ValorPago;
+                                        p.Saldo = r.Saldo;
                                         p.FechaPago = r.FechaPago;
                                         p.Pagado = false;
                                         context.Pago.Add(p);
 
                                         Pago pg = context.Pago.FirstOrDefault(x => x.IDPago == r.IDPago);
                                         pg.Pagado = true;
-                                        pg.Saldo = pag.Saldo - pago.ValorPago;
+                                        pg.Saldo = r.Saldo + splitPago;
 
                                         context.SaveChanges();
 
@@ -256,17 +238,18 @@ namespace Prestamos.Repositorios
 
         public decimal TotalPagosxDia(DateTime fechaInicial, DateTime fechaFinal)
         {
-            var query = new List<Pago>();
+            var query = new List<PagoCuota>();
             decimal pagos;
 
             using (var context = new PrestamosEntities())
             {
                 query = (from p in context.Pago                         
-                         where p.FechaPago >= fechaInicial && p.FechaPago <= fechaFinal
-                         select p).ToList();
+                         join pc in context.PagoCuota on p.IDPago equals pc.IDPago                   
+                         where pc.FechaPago >= fechaInicial && p.FechaPago <= fechaFinal
+                         select pc).ToList();
             }
 
-            pagos = query.Sum(x => x.ValorPago);
+            pagos = query.Sum(x => x.Valor);
 
             return pagos;
 
@@ -274,13 +257,14 @@ namespace Prestamos.Repositorios
 
         public int NoAbonosXDia(DateTime fechaInicial, DateTime fechaFinal)
         {
-            var query = new List<Pago>();            
+            var query = new List<PagoCuota>();            
 
             using (var context = new PrestamosEntities())
             {
                 query = (from p in context.Pago
-                         where p.FechaPago >= fechaInicial && p.FechaPago <= fechaFinal
-                         select p).ToList();
+                         join pc in context.PagoCuota on p.IDPago equals pc.IDPago
+                         where pc.FechaPago >= fechaInicial && p.FechaPago <= fechaFinal
+                         select pc).ToList();
             }
 
             return query.Count();
@@ -325,12 +309,12 @@ namespace Prestamos.Repositorios
             {
                
 
-                var query = context.GetPorCobrarXFecha(fechaIni, FechaFinal).FirstOrDefault();
-
-
+                var query = (from p in context.Pago
+                             where p.Pagado == false && p.FechaPago >= fechaIni && p.FechaPago <= FechaFinal
+                             select p).ToList();
 
                 if (query == null) valor = 0;
-                else valor = decimal.Parse(query.ToString());
+                else valor = decimal.Parse(query.Sum(x => x.ValorPago).ToString());
             }
             
 
@@ -387,5 +371,37 @@ namespace Prestamos.Repositorios
 
             return query;
         }
+
+
+
+        public List<MorososDTO> Morosos()
+        {
+            var query = new List<MorososDTO>();
+            using (var context = new PrestamosEntities())
+            {
+
+                 query = (from p in context.Prestamo
+                          join c in context.Cliente on p.Documento equals c.Documento
+                          join pp in context.PrestamoPago on p.NoPrestamo equals pp.NoPrestamo
+                          join pg in context.Pago on pp.PrestamoPagoID equals pg.PrestamoPagoID
+                          where pg.Pagado == false && pg.FechaPago <= DateTime.Now
+                          select new MorososDTO()
+                          {
+                              Documento = c.Documento,
+                              Nombre = c.Nombre,
+                              NoPrestamo = p.NoPrestamo,
+                              Cuota = pg.Cuota,
+                              FechaPago = pg.FechaPago,
+                              ValorCuota = pg.ValorPago
+                          }
+                          ).ToList();                
+            }
+
+
+            return query;
+        }
+
     }
+
+
 }
