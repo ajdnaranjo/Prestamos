@@ -102,7 +102,7 @@ namespace Prestamos.Proceso
             var closingPending = false;
 
             if (closingPending) return;
-            string mesj = string.Format("Deseaa eliminar la cuota No. {0} por valor de $ {1} ?", cuota.Cuota, cuota.ValorPago.ToString("N"));
+            string mesj = string.Format("Deseaa eliminar la cuota No. {0} por valor de $ {1} ?", cuota.Cuota, cuota.ValorPago.ToString("N0"));
             DialogResult result = MessageBox.Show(mesj, "Eliminar",
                                    MessageBoxButtons.YesNoCancel,
                                    MessageBoxIcon.Information,
@@ -119,7 +119,7 @@ namespace Prestamos.Proceso
                         //repoPrestamo.RecalcularSaldo(noPrestamo, saldo);
                         limpiarFormulario();
 
-                        string mensaje = string.Format("La cuota No. {0} por valor de $ {1} fué eliminada correctamente", cuota.Cuota, cuota.ValorPago.ToString("N"));
+                        string mensaje = string.Format("La cuota No. {0} por valor de $ {1} fué eliminada correctamente", cuota.Cuota, cuota.ValorPago.ToString("N0"));
                         MessageBox.Show(mensaje);
 
                         dgvPagos.DataSource = null;

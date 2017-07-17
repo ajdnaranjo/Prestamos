@@ -122,16 +122,16 @@ namespace Prestamos.Proceso
                         (decimal.Parse(txtVlrPrestamo.Text.Trim()) * decimal.Parse(txtIntereses.Text.Trim())) / 100)
                         / decimal.Parse(txtNoCuotas.Text.Trim());
 
-            txtVlrCuota.Text = valorCuota.ToString("N");
+            txtVlrCuota.Text = valorCuota.ToString("N0");
 
             decimal ganancias = 0;
             ganancias =  (decimal.Parse(txtVlrPrestamo.Text.Trim()) * (decimal.Parse(txtIntereses.Text.Trim()) / 100));
-            txtGanancias.Text = ganancias.ToString("N");
+            txtGanancias.Text = ganancias.ToString("N0");
 
             decimal total = 0;
             total = (decimal.Parse(txtVlrPrestamo.Text.Trim()) +
                 (decimal.Parse(txtVlrPrestamo.Text.Trim()) * decimal.Parse(txtIntereses.Text.Trim())) / 100);
-            txtTotal.Text = total.ToString("N");
+            txtTotal.Text = total.ToString("N0");
             
         }
 
@@ -157,7 +157,7 @@ namespace Prestamos.Proceso
             if (txtVlrPrestamo.Text.Trim() != "")
             {
                 decimal valor = decimal.Parse(txtVlrPrestamo.Text.Trim());
-                txtVlrPrestamo.Text = valor.ToString("N");
+                txtVlrPrestamo.Text = valor.ToString("N0");
             }
         }
 

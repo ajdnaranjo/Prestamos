@@ -58,7 +58,7 @@ namespace Prestamos.Proceso
                 pago.FechaPago = DateTime.Parse(dtpFechaPago.Text);
                 pago.IDPago = int.Parse(cbCuotas.SelectedValue.ToString());
 
-                txtSaldo.Text = pago.Saldo.ToString("N");
+                txtSaldo.Text = pago.Saldo.ToString("N0");
 
                 try
                 {
@@ -105,8 +105,7 @@ namespace Prestamos.Proceso
                     RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
                     var repoPago = new RepositorioPagos();
                     var prestamo = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
-                    txtSaldo.Text = prestamo.Saldo.ToString("N");
-                    //txtVlrCuota.Text = prestamo.ValorCuota.ToString("N");
+                    txtSaldo.Text = prestamo.Saldo.ToString("N0");                    
 
                     List<Pago> cuotas = repoPago.CuotasXPagar(int.Parse(cbPrestamos.SelectedValue.ToString()));
 
@@ -121,7 +120,7 @@ namespace Prestamos.Proceso
                     }
                     else
                     {
-                        txtValor.Text = prestamo.ValorPrestamo.ToString("N");
+                        txtValor.Text = prestamo.ValorPrestamo.ToString("N0");
                         btnGuardar.Enabled = true;
                     }
                 }
@@ -154,7 +153,7 @@ namespace Prestamos.Proceso
             if (txtAbono.Text.Trim() != "")
             {
                 decimal valor = decimal.Parse(txtAbono.Text.Trim());
-                txtAbono.Text = valor.ToString("N");               
+                txtAbono.Text = valor.ToString("N0");               
 
                 if (decimal.Parse(txtAbono.Text) < decimal.Parse(txtVlrCuota.Text))
                 {
@@ -238,7 +237,7 @@ namespace Prestamos.Proceso
 
                     var pago = pagos.Where(x => x.IDPago == int.Parse(cbCuotas.SelectedValue.ToString())).FirstOrDefault();
 
-                    txtVlrCuota.Text = pago.ValorPago.ToString("N");
+                    txtVlrCuota.Text = pago.ValorPago.ToString("N0");
                 }
             }
         }

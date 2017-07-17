@@ -37,10 +37,11 @@
             this.consultasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoDiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.morososToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPrestamosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPagosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.morososToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recaudosPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +101,8 @@
             this.consultasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.consultarPagosToolStripMenuItem,
             this.movimientoDiarioToolStripMenuItem,
-            this.morososToolStripMenuItem});
+            this.morososToolStripMenuItem,
+            this.recaudosPorFechaToolStripMenuItem});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
@@ -108,16 +110,23 @@
             // consultarPagosToolStripMenuItem
             // 
             this.consultarPagosToolStripMenuItem.Name = "consultarPagosToolStripMenuItem";
-            this.consultarPagosToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.consultarPagosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.consultarPagosToolStripMenuItem.Text = "Consultar pagos";
             this.consultarPagosToolStripMenuItem.Click += new System.EventHandler(this.consultarPagosToolStripMenuItem_Click);
             // 
             // movimientoDiarioToolStripMenuItem
             // 
             this.movimientoDiarioToolStripMenuItem.Name = "movimientoDiarioToolStripMenuItem";
-            this.movimientoDiarioToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.movimientoDiarioToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.movimientoDiarioToolStripMenuItem.Text = "Movimiento diario";
             this.movimientoDiarioToolStripMenuItem.Click += new System.EventHandler(this.movimientoDiarioToolStripMenuItem_Click);
+            // 
+            // morososToolStripMenuItem
+            // 
+            this.morososToolStripMenuItem.Name = "morososToolStripMenuItem";
+            this.morososToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.morososToolStripMenuItem.Text = "Morosos";
+            this.morososToolStripMenuItem.Click += new System.EventHandler(this.morososToolStripMenuItem_Click);
             // 
             // administraciónToolStripMenuItem
             // 
@@ -142,12 +151,12 @@
             this.eliminarPagosToolStripMenuItem1.Text = "Eliminar pagos";
             this.eliminarPagosToolStripMenuItem1.Click += new System.EventHandler(this.eliminarPagosToolStripMenuItem1_Click);
             // 
-            // morososToolStripMenuItem
+            // recaudosPorFechaToolStripMenuItem
             // 
-            this.morososToolStripMenuItem.Name = "morososToolStripMenuItem";
-            this.morososToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
-            this.morososToolStripMenuItem.Text = "Morosos";
-            this.morososToolStripMenuItem.Click += new System.EventHandler(this.morososToolStripMenuItem_Click);
+            this.recaudosPorFechaToolStripMenuItem.Name = "recaudosPorFechaToolStripMenuItem";
+            this.recaudosPorFechaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.recaudosPorFechaToolStripMenuItem.Text = "Recaudos por fecha";
+            this.recaudosPorFechaToolStripMenuItem.Click += new System.EventHandler(this.recaudosPorFechaToolStripMenuItem_Click);
             // 
             // frmInicio
             // 
@@ -186,5 +195,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarPrestamosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem eliminarPagosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem morososToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem recaudosPorFechaToolStripMenuItem;
     }
 }

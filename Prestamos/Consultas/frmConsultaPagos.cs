@@ -46,19 +46,19 @@ namespace Prestamos.Consultas
                         txtEstado.Text = "Activo";
                     else
                         txtEstado.Text = "Pagado";
-                    txtValorTotal.Text = prestamo.Total.ToString("N");
+                    txtValorTotal.Text = prestamo.Total.ToString("N0");
 
                     var repop = new RepositorioPagos();
                     var pagos = repop.ConsultaPagos(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
                     var pagados = repop.GetPagosCuotasXPrestamoID(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
 
                     var sumaAbonos = pagados.Sum(x => x.Valor);
-                    txtTotalAbonos.Text = sumaAbonos.ToString("N");
-                    txtSaldoPendiente.Text = (prestamo.Total - sumaAbonos).ToString("N");
+                    txtTotalAbonos.Text = sumaAbonos.ToString("N0");
+                    txtSaldoPendiente.Text = (prestamo.Total - sumaAbonos).ToString("N0");
 
                     dtgDatos.AutoGenerateColumns = false;
-                    dtgDatos.Columns["valorpago"].DefaultCellStyle.Format = "N";
-                    dtgDatos.Columns["saldo"].DefaultCellStyle.Format = "N";
+                    dtgDatos.Columns["valorpago"].DefaultCellStyle.Format = "N0";
+                    dtgDatos.Columns["saldo"].DefaultCellStyle.Format = "N0";
                     dtgDatos.DataSource = pagos;
                 }
             }

@@ -64,6 +64,12 @@
     <Compile Include="Consultas\frmMovimiento.Designer.cs">
       <DependentUpon>frmMovimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\frmRecaudoPorFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmRecaudoPorFecha.Designer.cs">
+      <DependentUpon>frmRecaudoPorFecha.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmMovimiento.resx">
       <DependentUpon>frmMovimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\frmRecaudoPorFecha.resx">
+      <DependentUpon>frmRecaudoPorFecha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInicio.resx">
       <DependentUpon>frmInicio.cs</DependentUpon>

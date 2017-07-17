@@ -5,6 +5,7 @@ using Prestamos.Repositorios;
 using Prestamos.Modelos;
 
 
+
 namespace Prestamos.Repositorios
 {
     [Serializable]
@@ -379,8 +380,6 @@ namespace Prestamos.Repositorios
             return query;
         }
 
-
-
         public List<MorososDTO> Morosos()
         {
             var query = new List<MorososDTO>();
@@ -408,6 +407,50 @@ namespace Prestamos.Repositorios
             return query;
         }
 
+        public List<Pago> RecaudosXFechaTotal(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            var query = new List<Pago>();
+            using (var context = new PrestamosEntities())
+            {
+
+                query = (from p in context.Prestamo                     
+                         join pp in context.PrestamoPago on p.NoPrestamo equals pp.NoPrestamo
+                         join pg in context.Pago on pp.PrestamoPagoID equals pg.PrestamoPagoID                        
+                         select pg).ToList();
+            }
+
+            List<Pago> datos =  query.Where(x => x.FechaPago.Date >= fechaDesde.Date && x.FechaPago.Date <= fechaHasta.Date).ToList();
+
+            return datos;
+        }
+
+
+        public List<PagosDTO> RecaudosXFechaDetalle(DateTime fechaDesde, DateTime fechaHasta)
+        {
+            var query = new List<PagosDTO>();
+            using (var context = new PrestamosEntities())
+            {
+
+                query = (from p in context.Prestamo
+                         join c in context.Cliente on p.Documento equals c.Documento
+                         join pp in context.PrestamoPago on p.NoPrestamo equals pp.NoPrestamo
+                         join pg in context.Pago on pp.PrestamoPagoID equals pg.PrestamoPagoID      
+                         orderby c.Nombre, pg.Cuota                                           
+                         select new PagosDTO() {
+                             Nombre = c.Nombre,
+                             Cuota = pg.Cuota,                             
+                             ValorPago = pg.ValorPago,
+                             FechaPago = pg.FechaPago,
+                             Pagado = pg.Pagado
+                             
+                         }).ToList();
+                
+            }
+
+            List<PagosDTO> datos = query.Where(x => x.FechaPago >= fechaDesde.Date && x.FechaPago <= fechaHasta.Date).ToList();
+
+            return datos;
+        }
     }
 
 

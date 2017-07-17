@@ -24,13 +24,13 @@ namespace Prestamos.Consultas
             var repoPagos = new RepositorioPagos();
 
             txtTotalPrestamos.Text = 
-                repoPrestamos.PrestamoxFecha(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N");
+                repoPrestamos.PrestamoxFecha(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N0");
             txtTotalPagos.Text =
-                repoPagos.TotalPagosxDia(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N");
+                repoPagos.TotalPagosxDia(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N0");
             txtTotalAbonos.Text = 
                 repoPagos.NoAbonosXDia(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString();
             txtPorCobrar.Text = 
-                repoPagos.PorCobrar(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N");
+                repoPagos.PorCobrar(DateTime.Parse(dtpFechaini.Text), DateTime.Parse(dtpFechaFinal.Text)).ToString("N0");
         }
 
       

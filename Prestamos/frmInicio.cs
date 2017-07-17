@@ -77,5 +77,12 @@ namespace Prestamos
             frm.Show();
 
         }
+
+        private void recaudosPorFechaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consultas.frmRecaudoPorFecha frm = new Consultas.frmRecaudoPorFecha();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

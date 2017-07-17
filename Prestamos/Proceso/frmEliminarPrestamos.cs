@@ -59,7 +59,7 @@ namespace Prestamos.Proceso
             var closingPending = false;
 
             if (closingPending) return;
-            string mesj = string.Format("Deseaa eliminar el prestamo No. {0} por valor de $ {1} ?", noPrestamo, valor.ToString("N"));
+            string mesj = string.Format("Deseaa eliminar el prestamo No. {0} por valor de $ {1} ?", noPrestamo, valor.ToString("N0"));
             DialogResult result = MessageBox.Show(mesj, "Eliminar",
                                    MessageBoxButtons.YesNoCancel,
                                    MessageBoxIcon.Information,
@@ -75,7 +75,7 @@ namespace Prestamos.Proceso
                         repo.EliminarPrestamo(int.Parse(cbNoPrestamo.SelectedValue.ToString()));
                         limpiarFormulario();
 
-                        string mensaje = string.Format("El prestamo No. {0} por valor de $ {1} fué eliminado correctamente", noPrestamo, valor.ToString("N"));
+                        string mensaje = string.Format("El prestamo No. {0} por valor de $ {1} fué eliminado correctamente", noPrestamo, valor.ToString("N0"));
                         MessageBox.Show(mensaje);
                     }
                     catch (Exception ex)

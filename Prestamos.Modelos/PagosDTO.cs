@@ -18,7 +18,7 @@ namespace Prestamos.Modelos
         public bool? Pagado { get; set; }
         public decimal? Valor { get; set; }
         public DateTime? FechaPagoReal { get; set; }
-
+        public string Nombre { get; set; }
 
     }
 }
