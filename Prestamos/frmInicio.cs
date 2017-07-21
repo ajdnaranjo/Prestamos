@@ -84,5 +84,13 @@ namespace Prestamos
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void manejoUsuariosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Maestros.frmUsuarios frm = new Maestros.frmUsuarios();
+            frm.MdiParent = this;
+            frm.Show();
+
+        }
     }
 }

@@ -68,6 +68,16 @@
           <Property Name="PrestamoPagoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NoPrestamo" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Usuario" />
+          </Key>
+          <Property Name="Usuario" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Contrasena" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="FechaModificación" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Pago_PrestamoPago">
           <End Role="PrestamoPago" Type="Self.PrestamoPago" Multiplicity="1" />
           <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
@@ -135,6 +145,7 @@
           <EntitySet Name="PagoCuota" EntityType="Self.PagoCuota" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prestamo" EntityType="Self.Prestamo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrestamoPago" EntityType="Self.PrestamoPago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Pago_PrestamoPago" Association="Self.FK_Pago_PrestamoPago">
             <End Role="PrestamoPago" EntitySet="PrestamoPago" />
             <End Role="Pago" EntitySet="Pago" />
@@ -187,6 +198,7 @@
             <End Role="Pago" EntitySet="Pago" />
             <End Role="PagoCuota" EntitySet="PagoCuota" />
           </AssociationSet>
+          <EntitySet Name="Usuarios" EntityType="PrestamosModel.Usuarios" />
           </EntityContainer>
         <EntityType Name="FormasPago">
           <Key>
@@ -321,6 +333,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Usuario" />
+          </Key>
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Contrasena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="FechaModificación" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -393,6 +415,17 @@
                 <ScalarProperty Name="Cuota" ColumnName="Cuota" />
                 <ScalarProperty Name="PrestamoPagoID" ColumnName="PrestamoPagoID" />
                 <ScalarProperty Name="IDPago" ColumnName="IDPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="PrestamosModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="FechaModificación" ColumnName="FechaModificación" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

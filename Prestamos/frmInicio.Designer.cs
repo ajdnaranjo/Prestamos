@@ -38,10 +38,12 @@
             this.consultarPagosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientoDiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.morososToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.recaudosPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPrestamosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPagosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.recaudosPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manejoUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.manejoUsuariosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +53,8 @@
             this.inicioToolStripMenuItem,
             this.procesoToolStripMenuItem,
             this.consultasToolStripMenuItem,
-            this.administraciónToolStripMenuItem});
+            this.administraciónToolStripMenuItem,
+            this.manejoUsuariosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1128, 24);
@@ -128,6 +131,13 @@
             this.morososToolStripMenuItem.Text = "Morosos";
             this.morososToolStripMenuItem.Click += new System.EventHandler(this.morososToolStripMenuItem_Click);
             // 
+            // recaudosPorFechaToolStripMenuItem
+            // 
+            this.recaudosPorFechaToolStripMenuItem.Name = "recaudosPorFechaToolStripMenuItem";
+            this.recaudosPorFechaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.recaudosPorFechaToolStripMenuItem.Text = "Recaudos por fecha";
+            this.recaudosPorFechaToolStripMenuItem.Click += new System.EventHandler(this.recaudosPorFechaToolStripMenuItem_Click);
+            // 
             // administraciónToolStripMenuItem
             // 
             this.administraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -151,12 +161,20 @@
             this.eliminarPagosToolStripMenuItem1.Text = "Eliminar pagos";
             this.eliminarPagosToolStripMenuItem1.Click += new System.EventHandler(this.eliminarPagosToolStripMenuItem1_Click);
             // 
-            // recaudosPorFechaToolStripMenuItem
+            // manejoUsuariosToolStripMenuItem
             // 
-            this.recaudosPorFechaToolStripMenuItem.Name = "recaudosPorFechaToolStripMenuItem";
-            this.recaudosPorFechaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.recaudosPorFechaToolStripMenuItem.Text = "Recaudos por fecha";
-            this.recaudosPorFechaToolStripMenuItem.Click += new System.EventHandler(this.recaudosPorFechaToolStripMenuItem_Click);
+            this.manejoUsuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.manejoUsuariosToolStripMenuItem1});
+            this.manejoUsuariosToolStripMenuItem.Name = "manejoUsuariosToolStripMenuItem";
+            this.manejoUsuariosToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.manejoUsuariosToolStripMenuItem.Text = "Configuración";
+            // 
+            // manejoUsuariosToolStripMenuItem1
+            // 
+            this.manejoUsuariosToolStripMenuItem1.Name = "manejoUsuariosToolStripMenuItem1";
+            this.manejoUsuariosToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+            this.manejoUsuariosToolStripMenuItem1.Text = "Manejo Usuarios";
+            this.manejoUsuariosToolStripMenuItem1.Click += new System.EventHandler(this.manejoUsuariosToolStripMenuItem1_Click);
             // 
             // frmInicio
             // 
@@ -196,5 +214,7 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarPagosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem morososToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem recaudosPorFechaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manejoUsuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem manejoUsuariosToolStripMenuItem1;
     }
 }

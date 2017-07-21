@@ -89,6 +89,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositorioCrearPrestamo.cs" />
     <Compile Include="RepositorioPagos.cs" />
+    <Compile Include="RepositorioUsuarios.cs" />
+    <Compile Include="Usuarios.cs">
+      <DependentUpon>MPrestamos.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">

@@ -16,6 +16,7 @@
         <EntityTypeShape EntityType="PrestamosModel.Pago" Width="1.5" PointX="7.125" PointY="14.375" />
         <AssociationConnector Association="PrestamosModel.FK_Pago_PrestamoPago" />
         <AssociationConnector Association="PrestamosModel.FK_PagoCuota_Pago" />
+        <EntityTypeShape EntityType="PrestamosModel.Usuarios" Width="1.5" PointX="0.75" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
