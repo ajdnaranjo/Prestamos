@@ -23,7 +23,7 @@ namespace Prestamos.Maestros
         {
             ddlEstado.Items.Add("Seleccionar");
             ddlEstado.Items.Add("Activo");
-            ddlEstado.Items.Add("InActivo");
+            ddlEstado.Items.Add("Inactivo");
             ddlEstado.SelectedItem = "Seleccionar";
        
 
@@ -62,6 +62,26 @@ namespace Prestamos.Maestros
             txtNombre.Text = string.Empty;
             ddlEstado.SelectedItem = "Seleccionar";
 
+        }
+
+        private void txtUsuario_Leave(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text.Trim() != "")
+            {
+                var repo = new RepositorioUsuarios();
+                var user = repo.ObtenerUsuario(txtUsuario.Text.Trim());
+
+                if (user != null)
+                {
+                    txtContrasena.Text = user.Contrasena;
+                    txtNombre.Text = user.Nombre;
+                    if (user.Estado == true)
+                        ddlEstado.SelectedItem = "Activo";
+                    else
+                        ddlEstado.SelectedItem = "Inactivo";
+
+                }
+            }
         }
     }
 }

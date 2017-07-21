@@ -64,6 +64,17 @@ namespace Prestamos.Repositorios
             return flag;
         }
 
+        public Usuarios ObtenerUsuario(string usuario)
+        {
+            var user = new Usuarios();
+            using (var context = new PrestamosEntities())
+            {
+                user = context.Usuarios.FirstOrDefault(x => x.Usuario == usuario);
+            }
+
+            return user;
+        }
+
         private static string Encriptar(string _cadenaAencriptar)
         {
             string result = string.Empty;
