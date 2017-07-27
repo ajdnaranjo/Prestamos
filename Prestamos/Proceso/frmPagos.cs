@@ -102,12 +102,19 @@ namespace Prestamos.Proceso
             {
                 if (!cbPrestamos.SelectedItem.Equals("Seleccionar"))
                 {
-                    RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();
+                    RepositorioCrearPrestamo repo = new RepositorioCrearPrestamo();                    
                     var repoPago = new RepositorioPagos();
                     var prestamo = repo.GetPrestamosXID(int.Parse(cbPrestamos.SelectedValue.ToString()));
                     txtSaldo.Text = prestamo.Saldo.ToString("N0");                    
 
                     List<Pago> cuotas = repoPago.CuotasXPagar(int.Parse(cbPrestamos.SelectedValue.ToString()));
+
+                    var abono = repoPago.UltimoAbono(prestamo.NoPrestamo);
+                    if (abono != null)
+                    {
+                        txtValUltPago.Text = abono.Valor.ToString("N0");
+                        txtFechaUltPago.Text = abono.Fecha.ToString("d");
+                    }
 
                     cbCuotas.DisplayMember = "Cuota";
                     cbCuotas.ValueMember = "IDPago";

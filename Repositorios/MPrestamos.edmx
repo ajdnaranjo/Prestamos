@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PrestamosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Abono">
+          <Key>
+            <PropertyRef Name="IdAbono" />
+          </Key>
+          <Property Name="IdAbono" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPago" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="Documento" />
@@ -78,6 +87,18 @@
           <Property Name="Estado" Type="bit" Nullable="false" />
           <Property Name="FechaModificación" Type="datetime" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Abono_Pago">
+          <End Role="Pago" Type="Self.Pago" Multiplicity="1" />
+          <End Role="Abono" Type="Self.Abono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="IDPago" />
+            </Principal>
+            <Dependent Role="Abono">
+              <PropertyRef Name="IdPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Pago_PrestamoPago">
           <End Role="PrestamoPago" Type="Self.PrestamoPago" Multiplicity="1" />
           <End Role="Pago" Type="Self.Pago" Multiplicity="*" />
@@ -139,6 +160,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PrestamosModelStoreContainer">
+          <EntitySet Name="Abono" EntityType="Self.Abono" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FormasPago" EntityType="Self.FormasPago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pago" EntityType="Self.Pago" Schema="dbo" store:Type="Tables" />
@@ -146,6 +168,10 @@
           <EntitySet Name="Prestamo" EntityType="Self.Prestamo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrestamoPago" EntityType="Self.PrestamoPago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Abono_Pago" Association="Self.FK_Abono_Pago">
+            <End Role="Pago" EntitySet="Pago" />
+            <End Role="Abono" EntitySet="Abono" />
+          </AssociationSet>
           <AssociationSet Name="FK_Pago_PrestamoPago" Association="Self.FK_Pago_PrestamoPago">
             <End Role="PrestamoPago" EntitySet="PrestamoPago" />
             <End Role="Pago" EntitySet="Pago" />
@@ -199,6 +225,11 @@
             <End Role="PagoCuota" EntitySet="PagoCuota" />
           </AssociationSet>
           <EntitySet Name="Usuarios" EntityType="PrestamosModel.Usuarios" />
+          <EntitySet Name="Abono" EntityType="PrestamosModel.Abono" />
+          <AssociationSet Name="FK_Abono_Pago" Association="PrestamosModel.FK_Abono_Pago">
+            <End Role="Pago" EntitySet="Pago" />
+            <End Role="Abono" EntitySet="Abono" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="FormasPago">
           <Key>
@@ -308,6 +339,7 @@
           <Property Name="Pagado" Type="Boolean" />
           <NavigationProperty Name="PrestamoPago" Relationship="PrestamosModel.FK_Pago_PrestamoPago" FromRole="Pago" ToRole="PrestamoPago" />
           <NavigationProperty Name="PagoCuota" Relationship="PrestamosModel.FK_PagoCuota_Pago" FromRole="Pago" ToRole="PagoCuota" />
+          <NavigationProperty Name="Abono" Relationship="PrestamosModel.FK_Abono_Pago" FromRole="Pago" ToRole="Abono" />
         </EntityType>
         <Association Name="FK_Pago_PrestamoPago">
           <End Type="PrestamosModel.PrestamoPago" Role="PrestamoPago" Multiplicity="1" />
@@ -343,6 +375,28 @@
           <Property Name="Estado" Type="Boolean" Nullable="false" />
           <Property Name="FechaModificación" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="Abono">
+          <Key>
+            <PropertyRef Name="IdAbono" />
+          </Key>
+          <Property Name="IdAbono" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPago" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Pago" Relationship="PrestamosModel.FK_Abono_Pago" FromRole="Abono" ToRole="Pago" />
+        </EntityType>
+        <Association Name="FK_Abono_Pago">
+          <End Type="PrestamosModel.Pago" Role="Pago" Multiplicity="1" />
+          <End Type="PrestamosModel.Abono" Role="Abono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pago">
+              <PropertyRef Name="IDPago" />
+            </Principal>
+            <Dependent Role="Abono">
+              <PropertyRef Name="IdPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -426,6 +480,16 @@
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abono">
+            <EntityTypeMapping TypeName="PrestamosModel.Abono">
+              <MappingFragment StoreEntitySet="Abono">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="IdPago" ColumnName="IdPago" />
+                <ScalarProperty Name="IdAbono" ColumnName="IdAbono" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

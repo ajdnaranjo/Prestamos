@@ -17,6 +17,7 @@ namespace Prestamos.Repositorios
         public Pago()
         {
             this.PagoCuota = new HashSet<PagoCuota>();
+            this.Abono = new HashSet<Abono>();
         }
     
         public int IDPago { get; set; }
@@ -29,5 +30,6 @@ namespace Prestamos.Repositorios
     
         public virtual PrestamoPago PrestamoPago { get; set; }
         public virtual ICollection<PagoCuota> PagoCuota { get; set; }
+        public virtual ICollection<Abono> Abono { get; set; }
     }
 }

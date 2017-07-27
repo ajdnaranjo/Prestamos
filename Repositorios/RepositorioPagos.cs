@@ -16,7 +16,8 @@ namespace Prestamos.Repositorios
         {
            using (var context = new PrestamosEntities())
             {
-
+                var Abono = pago.ValorPago;
+                var IDPagoAbono = pago.IDPago;
                 var pres = context.Prestamo.FirstOrDefault(cl => cl.NoPrestamo == presta.NoPrestamo);
                 var pag = context.Pago.FirstOrDefault(x => x.IDPago == pago.IDPago);
 
@@ -133,9 +134,7 @@ namespace Prestamos.Repositorios
 
                                     }
                                   
-                                }
-
-
+                                }                           
 
                             }
                         }
@@ -157,6 +156,14 @@ namespace Prestamos.Repositorios
 
                 }
 
+                var a = new Abono();
+                a = new Abono();
+                a.IdPago = IDPagoAbono;
+                a.Valor = Abono;
+                a.Fecha = DateTime.Now;
+                context.Abono.Add(a);
+                context.SaveChanges();
+
                 var saldoCuotas = (from p in context.Pago
                              join pp in context.PrestamoPago on p.PrestamoPagoID equals pp.PrestamoPagoID
                              join pc in context.PagoCuota on p.IDPago equals pc.IDPago
@@ -167,6 +174,8 @@ namespace Prestamos.Repositorios
 
                 pres.Saldo = pres.Total - saldo;
                 context.SaveChanges();
+
+
             }        
 
         }
@@ -450,6 +459,24 @@ namespace Prestamos.Repositorios
             List<PagosDTO> datos = query.Where(x => x.FechaPago >= fechaDesde.Date && x.FechaPago <= fechaHasta.Date).ToList();
 
             return datos;
+        }
+
+        public Abono UltimoAbono(int NoPrestamo)
+        {
+            var query = new Abono();
+            using (var context = new PrestamosEntities())
+            {
+
+                query = (from p in context.Prestamo
+                         join pp in context.PrestamoPago on p.NoPrestamo equals pp.NoPrestamo
+                         join pg in context.Pago on pp.PrestamoPagoID equals pg.PrestamoPagoID
+                         join a in context.Abono  on pg.IDPago equals a.IdPago
+                         where p.NoPrestamo == NoPrestamo
+                         orderby   a.Fecha descending
+                         select a).FirstOrDefault();
+            }
+
+            return query;
         }
     }
 

@@ -32,5 +32,6 @@ namespace Prestamos.Repositorios
         public DbSet<PagoCuota> PagoCuota { get; set; }
         public DbSet<Pago> Pago { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Abono> Abono { get; set; }
     }
 }

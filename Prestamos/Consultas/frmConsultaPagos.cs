@@ -18,15 +18,22 @@ namespace Prestamos.Consultas
         {
             if (txtDocumento.Text.Trim() != "")
             {
-                var repo = new RepositorioCrearPrestamo();
-                var repocliente = new RepositorioClientes();
-                List<Prestamo> prestamos = new List<Prestamo>();
-                prestamos = repo.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim()));
-                cbNoPrestamo.DisplayMember = "NoPrestamo";
-                cbNoPrestamo.ValueMember = "NoPrestamo";
-                cbNoPrestamo.DataSource = prestamos;
-                var cliente = repocliente.ClienteXDocumento(long.Parse(txtDocumento.Text.Trim()));
-                txtNombre.Text = cliente.Nombre;
+                try
+                {
+                    var repo = new RepositorioCrearPrestamo();
+                    var repocliente = new RepositorioClientes();
+                    List<Prestamo> prestamos = new List<Prestamo>();
+                    prestamos = repo.GetPrestamosXDocumento(long.Parse(txtDocumento.Text.Trim()));
+                    cbNoPrestamo.DisplayMember = "NoPrestamo";
+                    cbNoPrestamo.ValueMember = "NoPrestamo";
+                    cbNoPrestamo.DataSource = prestamos;
+                    var cliente = repocliente.ClienteXDocumento(long.Parse(txtDocumento.Text.Trim()));
+                    txtNombre.Text = cliente.Nombre;
+                }
+                catch
+                {
+                    MessageBox.Show("Ha ocurrido un error, por favor verifique la información ingresada.");
+                }
             }
         }
 
