@@ -175,6 +175,13 @@ namespace Prestamos.Repositorios
                 pres.Saldo = pres.Total - saldo;
                 context.SaveChanges();
 
+                var cancelaPrestamo = context.Prestamo.FirstOrDefault(x => x.NoPrestamo == presta.NoPrestamo);
+
+                if (cancelaPrestamo.Saldo == 0)
+                {
+                    cancelaPrestamo.Estado = false;
+                    context.SaveChanges();
+                }
 
             }        
 
