@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFechaUltPago = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtValUltPago = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.cbCuotas = new System.Windows.Forms.ComboBox();
@@ -59,10 +63,6 @@
             this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.txtFechaUltPago = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtValUltPago = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
@@ -100,6 +100,44 @@
             this.groupBox1.Size = new System.Drawing.Size(550, 186);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtFechaUltPago
+            // 
+            this.txtFechaUltPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaUltPago.ForeColor = System.Drawing.Color.Red;
+            this.txtFechaUltPago.Location = new System.Drawing.Point(320, 68);
+            this.txtFechaUltPago.Name = "txtFechaUltPago";
+            this.txtFechaUltPago.ReadOnly = true;
+            this.txtFechaUltPago.Size = new System.Drawing.Size(100, 20);
+            this.txtFechaUltPago.TabIndex = 26;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(217, 71);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(97, 13);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Fecha último pago:";
+            // 
+            // txtValUltPago
+            // 
+            this.txtValUltPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValUltPago.ForeColor = System.Drawing.Color.Red;
+            this.txtValUltPago.Location = new System.Drawing.Point(99, 68);
+            this.txtValUltPago.Name = "txtValUltPago";
+            this.txtValUltPago.ReadOnly = true;
+            this.txtValUltPago.Size = new System.Drawing.Size(100, 20);
+            this.txtValUltPago.TabIndex = 24;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(7, 71);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 13);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Valor último pago:";
             // 
             // txtNombre
             // 
@@ -300,6 +338,7 @@
             // 
             // label4
             // 
+            this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(12, 3);
             this.label4.Name = "label4";
@@ -351,6 +390,7 @@
             // 
             this.dgvClientes.AllowUserToAddRows = false;
             this.dgvClientes.AllowUserToDeleteRows = false;
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Documento,
@@ -386,48 +426,11 @@
             this.Estado.ReadOnly = true;
             this.Estado.Width = 80;
             // 
-            // txtFechaUltPago
-            // 
-            this.txtFechaUltPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaUltPago.ForeColor = System.Drawing.Color.Red;
-            this.txtFechaUltPago.Location = new System.Drawing.Point(320, 68);
-            this.txtFechaUltPago.Name = "txtFechaUltPago";
-            this.txtFechaUltPago.ReadOnly = true;
-            this.txtFechaUltPago.Size = new System.Drawing.Size(100, 20);
-            this.txtFechaUltPago.TabIndex = 26;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(217, 71);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 13);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Fecha último pago:";
-            // 
-            // txtValUltPago
-            // 
-            this.txtValUltPago.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValUltPago.ForeColor = System.Drawing.Color.Red;
-            this.txtValUltPago.Location = new System.Drawing.Point(99, 68);
-            this.txtValUltPago.Name = "txtValUltPago";
-            this.txtValUltPago.ReadOnly = true;
-            this.txtValUltPago.Size = new System.Drawing.Size(100, 20);
-            this.txtValUltPago.TabIndex = 24;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(7, 71);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 13);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Valor último pago:";
-            // 
             // frmPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(571, 544);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label4);

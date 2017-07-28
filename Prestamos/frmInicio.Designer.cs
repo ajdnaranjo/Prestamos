@@ -39,6 +39,7 @@
             this.movimientoDiarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.morososToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.recaudosPorFechaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prestamosCanceladosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPrestamosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarPagosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -105,7 +106,8 @@
             this.consultarPagosToolStripMenuItem,
             this.movimientoDiarioToolStripMenuItem,
             this.morososToolStripMenuItem,
-            this.recaudosPorFechaToolStripMenuItem});
+            this.recaudosPorFechaToolStripMenuItem,
+            this.prestamosCanceladosToolStripMenuItem});
             this.consultasToolStripMenuItem.Name = "consultasToolStripMenuItem";
             this.consultasToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.consultasToolStripMenuItem.Text = "Consultas";
@@ -113,30 +115,37 @@
             // consultarPagosToolStripMenuItem
             // 
             this.consultarPagosToolStripMenuItem.Name = "consultarPagosToolStripMenuItem";
-            this.consultarPagosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.consultarPagosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.consultarPagosToolStripMenuItem.Text = "Consultar pagos";
             this.consultarPagosToolStripMenuItem.Click += new System.EventHandler(this.consultarPagosToolStripMenuItem_Click);
             // 
             // movimientoDiarioToolStripMenuItem
             // 
             this.movimientoDiarioToolStripMenuItem.Name = "movimientoDiarioToolStripMenuItem";
-            this.movimientoDiarioToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.movimientoDiarioToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.movimientoDiarioToolStripMenuItem.Text = "Movimiento diario";
             this.movimientoDiarioToolStripMenuItem.Click += new System.EventHandler(this.movimientoDiarioToolStripMenuItem_Click);
             // 
             // morososToolStripMenuItem
             // 
             this.morososToolStripMenuItem.Name = "morososToolStripMenuItem";
-            this.morososToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.morososToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.morososToolStripMenuItem.Text = "Morosos";
             this.morososToolStripMenuItem.Click += new System.EventHandler(this.morososToolStripMenuItem_Click);
             // 
             // recaudosPorFechaToolStripMenuItem
             // 
             this.recaudosPorFechaToolStripMenuItem.Name = "recaudosPorFechaToolStripMenuItem";
-            this.recaudosPorFechaToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.recaudosPorFechaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.recaudosPorFechaToolStripMenuItem.Text = "Recaudos por fecha";
             this.recaudosPorFechaToolStripMenuItem.Click += new System.EventHandler(this.recaudosPorFechaToolStripMenuItem_Click);
+            // 
+            // prestamosCanceladosToolStripMenuItem
+            // 
+            this.prestamosCanceladosToolStripMenuItem.Name = "prestamosCanceladosToolStripMenuItem";
+            this.prestamosCanceladosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.prestamosCanceladosToolStripMenuItem.Text = "Prestamos cancelados";
+            this.prestamosCanceladosToolStripMenuItem.Click += new System.EventHandler(this.prestamosCanceladosToolStripMenuItem_Click);
             // 
             // administraciónToolStripMenuItem
             // 
@@ -180,6 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::Prestamos.Properties.Resources.Logo;
             this.ClientSize = new System.Drawing.Size(1128, 633);
             this.Controls.Add(this.menuStrip1);
@@ -216,5 +226,6 @@
         private System.Windows.Forms.ToolStripMenuItem recaudosPorFechaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manejoUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manejoUsuariosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem prestamosCanceladosToolStripMenuItem;
     }
 }

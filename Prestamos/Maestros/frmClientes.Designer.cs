@@ -58,6 +58,7 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(-1, 2);
             this.label1.Name = "label1";
@@ -245,6 +246,7 @@
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.AllowUserToResizeColumns = false;
             this.dgvClientes.AllowUserToResizeRows = false;
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Documento,

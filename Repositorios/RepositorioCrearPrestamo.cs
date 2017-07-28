@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Prestamos.Modelos;
 
 namespace Prestamos.Repositorios
 {
@@ -179,7 +180,6 @@ namespace Prestamos.Repositorios
 
         }
 
-
         public void RecalcularSaldo(int noPrestamo)
         {
             using (var context = new PrestamosEntities())
@@ -221,6 +221,27 @@ namespace Prestamos.Repositorios
 
             }
 
+        }
+
+        public List<PrestamosDTO> PrestamosCancelados(DateTime fechaIni, DateTime fechaFinal)
+        {
+            var query = new List<PrestamosDTO>();
+            using (var context = new PrestamosEntities())
+            {
+                query = (from p in context.Prestamo
+                         join c in context.Cliente on p.Documento equals c.Documento
+                         where p.Estado == false && p.FechaPrestamo >= fechaIni && p.FechaPrestamo <= fechaFinal
+                         orderby c.Nombre, p.NoPrestamo ascending
+                         select new PrestamosDTO() {
+                             Nombre = c.Nombre,
+                             Documento = c.Documento,
+                             NoPrestamo = p.NoPrestamo,
+                             FechaPrestamo = p.FechaPrestamo,
+                             Total = p.Total
+                         }).ToList();
+            }
+
+            return query;
         }
     }
 }

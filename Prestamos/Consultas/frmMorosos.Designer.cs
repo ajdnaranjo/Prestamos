@@ -54,6 +54,7 @@
             // 
             // dgvMorosos
             // 
+            this.dgvMorosos.BackgroundColor = System.Drawing.Color.White;
             this.dgvMorosos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMorosos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Documento,
@@ -124,6 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(752, 554);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmMorosos";

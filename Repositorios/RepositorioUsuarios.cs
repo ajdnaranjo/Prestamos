@@ -75,6 +75,20 @@ namespace Prestamos.Repositorios
             return user;
         }
 
+        public List<Usuarios> ObtenerUsuarios(string nombre)
+        {
+            var users = new List<Usuarios>();
+            using (var context = new PrestamosEntities())
+            {
+                users = (from u in context.Usuarios
+                         where u.Nombre.Contains(nombre)
+                         select u).ToList();
+            }
+
+            return users;
+
+        }
+
         private static string Encriptar(string _cadenaAencriptar)
         {
             string result = string.Empty;

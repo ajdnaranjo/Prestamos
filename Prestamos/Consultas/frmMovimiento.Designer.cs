@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPorCobrar = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaini = new System.Windows.Forms.DateTimePicker();
@@ -41,8 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtPorCobrar = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +66,24 @@
             this.groupBox1.Size = new System.Drawing.Size(313, 191);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtPorCobrar
+            // 
+            this.txtPorCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPorCobrar.Location = new System.Drawing.Point(93, 155);
+            this.txtPorCobrar.Name = "txtPorCobrar";
+            this.txtPorCobrar.ReadOnly = true;
+            this.txtPorCobrar.Size = new System.Drawing.Size(100, 23);
+            this.txtPorCobrar.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 160);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Por cobrar:";
             // 
             // btnBuscar
             // 
@@ -175,29 +193,11 @@
             this.label6.Text = "Consultar movimiento";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 160);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Por cobrar:";
-            // 
-            // txtPorCobrar
-            // 
-            this.txtPorCobrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPorCobrar.Location = new System.Drawing.Point(93, 155);
-            this.txtPorCobrar.Name = "txtPorCobrar";
-            this.txtPorCobrar.ReadOnly = true;
-            this.txtPorCobrar.Size = new System.Drawing.Size(100, 23);
-            this.txtPorCobrar.TabIndex = 12;
-            // 
             // frmMovimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(337, 240);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);

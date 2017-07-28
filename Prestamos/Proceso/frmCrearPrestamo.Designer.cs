@@ -311,6 +311,7 @@
             // 
             // label13
             // 
+            this.label13.BackColor = System.Drawing.Color.White;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(-4, 2);
             this.label13.Name = "label13";

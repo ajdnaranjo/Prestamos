@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -201,6 +201,7 @@
             // 
             this.dtgDatos.AllowUserToAddRows = false;
             this.dtgDatos.AllowUserToDeleteRows = false;
+            this.dtgDatos.BackgroundColor = System.Drawing.Color.White;
             this.dtgDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idpago,
@@ -244,9 +245,9 @@
             // fechapago
             // 
             this.fechapago.DataPropertyName = "FechaPago";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.fechapago.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.fechapago.DefaultCellStyle = dataGridViewCellStyle1;
             this.fechapago.HeaderText = "Pago al día";
             this.fechapago.Name = "fechapago";
             this.fechapago.ReadOnly = true;
@@ -254,8 +255,8 @@
             // ValorPago
             // 
             this.ValorPago.DataPropertyName = "valorpago";
-            dataGridViewCellStyle6.Format = "string.Format(\"N\")";
-            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "string.Format(\"N\")";
+            this.ValorPago.DefaultCellStyle = dataGridViewCellStyle2;
             this.ValorPago.HeaderText = "Valor a pagar";
             this.ValorPago.Name = "ValorPago";
             this.ValorPago.ReadOnly = true;
@@ -271,8 +272,8 @@
             // Saldo
             // 
             this.Saldo.DataPropertyName = "saldo";
-            dataGridViewCellStyle7.Format = "0.00##";
-            this.Saldo.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Format = "0.00##";
+            this.Saldo.DefaultCellStyle = dataGridViewCellStyle3;
             this.Saldo.HeaderText = "Saldo";
             this.Saldo.Name = "Saldo";
             this.Saldo.ReadOnly = true;
@@ -281,9 +282,9 @@
             // FechaReal
             // 
             this.FechaReal.DataPropertyName = "FechaPagoReal";
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            this.FechaReal.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.FechaReal.DefaultCellStyle = dataGridViewCellStyle4;
             this.FechaReal.HeaderText = "Fecha Abono";
             this.FechaReal.Name = "FechaReal";
             this.FechaReal.ReadOnly = true;
@@ -352,6 +353,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(686, 515);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);

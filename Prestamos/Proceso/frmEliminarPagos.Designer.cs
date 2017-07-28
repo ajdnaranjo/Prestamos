@@ -30,6 +30,12 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgvPagos = new System.Windows.Forms.DataGridView();
+            this.idpago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ValorPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pagada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,12 +43,6 @@
             this.txtDocumento = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.idpago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ValorPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Pagada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPagos)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,7 @@
             // dgvPagos
             // 
             this.dgvPagos.AllowUserToAddRows = false;
+            this.dgvPagos.BackgroundColor = System.Drawing.Color.White;
             this.dgvPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPagos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idpago,
@@ -79,6 +80,52 @@
             this.dgvPagos.Size = new System.Drawing.Size(485, 227);
             this.dgvPagos.TabIndex = 7;
             this.dgvPagos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPagos_CellContentClick);
+            // 
+            // idpago
+            // 
+            this.idpago.DataPropertyName = "idpago";
+            this.idpago.HeaderText = "idpago";
+            this.idpago.Name = "idpago";
+            this.idpago.ReadOnly = true;
+            this.idpago.Visible = false;
+            // 
+            // Cuota
+            // 
+            this.Cuota.DataPropertyName = "cuota";
+            this.Cuota.HeaderText = "Cuota";
+            this.Cuota.Name = "Cuota";
+            this.Cuota.ReadOnly = true;
+            this.Cuota.Width = 50;
+            // 
+            // ValorPago
+            // 
+            this.ValorPago.DataPropertyName = "Valor";
+            this.ValorPago.HeaderText = "Valor Pago";
+            this.ValorPago.Name = "ValorPago";
+            this.ValorPago.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "FechaPagoReal";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // Pagada
+            // 
+            this.Pagada.DataPropertyName = "Pagado";
+            this.Pagada.HeaderText = "Pagada";
+            this.Pagada.Name = "Pagada";
+            this.Pagada.ReadOnly = true;
+            this.Pagada.Width = 80;
+            // 
+            // eliminar
+            // 
+            this.eliminar.HeaderText = "";
+            this.eliminar.Name = "eliminar";
+            this.eliminar.ReadOnly = true;
+            this.eliminar.Text = "Eliminar";
+            this.eliminar.UseColumnTextForLinkValue = true;
             // 
             // txtNombre
             // 
@@ -143,57 +190,11 @@
             this.label2.Text = "Eliminar pagos";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // idpago
-            // 
-            this.idpago.DataPropertyName = "idpago";
-            this.idpago.HeaderText = "idpago";
-            this.idpago.Name = "idpago";
-            this.idpago.ReadOnly = true;
-            this.idpago.Visible = false;
-            // 
-            // Cuota
-            // 
-            this.Cuota.DataPropertyName = "cuota";
-            this.Cuota.HeaderText = "Cuota";
-            this.Cuota.Name = "Cuota";
-            this.Cuota.ReadOnly = true;
-            this.Cuota.Width = 50;
-            // 
-            // ValorPago
-            // 
-            this.ValorPago.DataPropertyName = "Valor";
-            this.ValorPago.HeaderText = "Valor Pago";
-            this.ValorPago.Name = "ValorPago";
-            this.ValorPago.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.DataPropertyName = "FechaPagoReal";
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // Pagada
-            // 
-            this.Pagada.DataPropertyName = "Pagado";
-            this.Pagada.HeaderText = "Pagada";
-            this.Pagada.Name = "Pagada";
-            this.Pagada.ReadOnly = true;
-            this.Pagada.Width = 80;
-            // 
-            // eliminar
-            // 
-            this.eliminar.HeaderText = "";
-            this.eliminar.Name = "eliminar";
-            this.eliminar.ReadOnly = true;
-            this.eliminar.Text = "Eliminar";
-            this.eliminar.UseColumnTextForLinkValue = true;
-            // 
             // frmEliminarPagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(521, 382);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);

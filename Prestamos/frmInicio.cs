@@ -92,5 +92,12 @@ namespace Prestamos
             frm.Show();
 
         }
+
+        private void prestamosCanceladosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consultas.frmPrestamosCancelados frm = new Consultas.frmPrestamosCancelados();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }

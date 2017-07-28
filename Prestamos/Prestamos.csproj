@@ -64,6 +64,12 @@
     <Compile Include="Consultas\frmMovimiento.Designer.cs">
       <DependentUpon>frmMovimiento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Consultas\frmPrestamosCancelados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Consultas\frmPrestamosCancelados.Designer.cs">
+      <DependentUpon>frmPrestamosCancelados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Consultas\frmRecaudoPorFecha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     <EmbeddedResource Include="Consultas\frmMovimiento.resx">
       <DependentUpon>frmMovimiento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Consultas\frmPrestamosCancelados.resx">
+      <DependentUpon>frmPrestamosCancelados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Consultas\frmRecaudoPorFecha.resx">
       <DependentUpon>frmRecaudoPorFecha.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,6 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Imagenes\Logo.jpg" />
+    <None Include="Resources\Login.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

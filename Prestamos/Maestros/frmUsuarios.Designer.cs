@@ -33,9 +33,6 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvClientes = new System.Windows.Forms.DataGridView();
-            this.Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ddlEstado = new System.Windows.Forms.ComboBox();
@@ -47,6 +44,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -72,6 +72,7 @@
             this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -95,9 +96,10 @@
             this.dgvClientes.AllowUserToDeleteRows = false;
             this.dgvClientes.AllowUserToResizeColumns = false;
             this.dgvClientes.AllowUserToResizeRows = false;
+            this.dgvClientes.BackgroundColor = System.Drawing.Color.White;
             this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvClientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Documento,
+            this.Usuario,
             this.Nombre,
             this.Estado});
             this.dgvClientes.Location = new System.Drawing.Point(6, 47);
@@ -105,29 +107,6 @@
             this.dgvClientes.ReadOnly = true;
             this.dgvClientes.Size = new System.Drawing.Size(458, 194);
             this.dgvClientes.TabIndex = 0;
-            // 
-            // Documento
-            // 
-            this.Documento.DataPropertyName = "documento";
-            this.Documento.HeaderText = "Documento";
-            this.Documento.Name = "Documento";
-            this.Documento.ReadOnly = true;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Width = 240;
-            // 
-            // Estado
-            // 
-            this.Estado.DataPropertyName = "estado";
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 70;
             // 
             // label1
             // 
@@ -233,10 +212,34 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Nombre:";
             // 
+            // Usuario
+            // 
+            this.Usuario.DataPropertyName = "usuario";
+            this.Usuario.HeaderText = "Usuario";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 240;
+            // 
+            // Estado
+            // 
+            this.Estado.DataPropertyName = "estado";
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 70;
+            // 
             // frmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(484, 439);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label1);
@@ -259,9 +262,6 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgvClientes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Documento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Estado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox ddlEstado;
@@ -273,5 +273,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Estado;
     }
 }

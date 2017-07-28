@@ -39,5 +39,7 @@ namespace Prestamos
                 MessageBox.Show("El usuario no existe o se encuentra inactivo.");
             }
         }
+
+       
     }
 }

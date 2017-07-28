@@ -83,5 +83,14 @@ namespace Prestamos.Maestros
                 }
             }
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var repo = new RepositorioUsuarios();
+            var usuarios = repo.ObtenerUsuarios(txtBuscar.Text.Trim());
+
+            dgvClientes.AutoGenerateColumns = false;
+            dgvClientes.DataSource = usuarios;
+        }
     }
 }

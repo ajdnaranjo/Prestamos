@@ -31,24 +31,24 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
             this.btnVerRecaudo = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtAbonos = new System.Windows.Forms.TextBox();
-            this.txtRecaudo = new System.Windows.Forms.TextBox();
-            this.dgvDatos = new System.Windows.Forms.DataGridView();
+            this.dtpHasta = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dtpDesde = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cuota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Abono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fechapago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pagado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtRecaudo = new System.Windows.Forms.TextBox();
+            this.txtAbonos = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
@@ -67,6 +67,50 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // btnVerRecaudo
+            // 
+            this.btnVerRecaudo.Location = new System.Drawing.Point(181, 26);
+            this.btnVerRecaudo.Name = "btnVerRecaudo";
+            this.btnVerRecaudo.Size = new System.Drawing.Size(75, 23);
+            this.btnVerRecaudo.TabIndex = 4;
+            this.btnVerRecaudo.Text = "Ver recaudo";
+            this.btnVerRecaudo.UseVisualStyleBackColor = true;
+            this.btnVerRecaudo.Click += new System.EventHandler(this.btnVerRecaudo_Click);
+            // 
+            // dtpHasta
+            // 
+            this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpHasta.Location = new System.Drawing.Point(55, 46);
+            this.dtpHasta.Name = "dtpHasta";
+            this.dtpHasta.Size = new System.Drawing.Size(105, 20);
+            this.dtpHasta.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Hasta:";
+            // 
+            // dtpDesde
+            // 
+            this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDesde.Location = new System.Drawing.Point(55, 20);
+            this.dtpDesde.Name = "dtpDesde";
+            this.dtpDesde.Size = new System.Drawing.Size(105, 20);
+            this.dtpDesde.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(8, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Desde:";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label6);
@@ -81,96 +125,18 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // label1
+            // label6
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(502, 23);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Recuados por fecha";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 26);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Desde:";
-            // 
-            // dtpDesde
-            // 
-            this.dtpDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDesde.Location = new System.Drawing.Point(55, 20);
-            this.dtpDesde.Name = "dtpDesde";
-            this.dtpDesde.Size = new System.Drawing.Size(105, 20);
-            this.dtpDesde.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Hasta:";
-            // 
-            // dtpHasta
-            // 
-            this.dtpHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpHasta.Location = new System.Drawing.Point(55, 46);
-            this.dtpHasta.Name = "dtpHasta";
-            this.dtpHasta.Size = new System.Drawing.Size(105, 20);
-            this.dtpHasta.TabIndex = 3;
-            // 
-            // btnVerRecaudo
-            // 
-            this.btnVerRecaudo.Location = new System.Drawing.Point(181, 26);
-            this.btnVerRecaudo.Name = "btnVerRecaudo";
-            this.btnVerRecaudo.Size = new System.Drawing.Size(75, 23);
-            this.btnVerRecaudo.TabIndex = 4;
-            this.btnVerRecaudo.Text = "Ver recaudo";
-            this.btnVerRecaudo.UseVisualStyleBackColor = true;
-            this.btnVerRecaudo.Click += new System.EventHandler(this.btnVerRecaudo_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Abonos:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(164, 29);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Recaudo:";
-            // 
-            // txtAbonos
-            // 
-            this.txtAbonos.Location = new System.Drawing.Point(58, 26);
-            this.txtAbonos.Name = "txtAbonos";
-            this.txtAbonos.ReadOnly = true;
-            this.txtAbonos.Size = new System.Drawing.Size(100, 20);
-            this.txtAbonos.TabIndex = 2;
-            // 
-            // txtRecaudo
-            // 
-            this.txtRecaudo.Location = new System.Drawing.Point(224, 26);
-            this.txtRecaudo.Name = "txtRecaudo";
-            this.txtRecaudo.ReadOnly = true;
-            this.txtRecaudo.Size = new System.Drawing.Size(100, 20);
-            this.txtRecaudo.TabIndex = 3;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 59);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 13);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Lista de Abonos";
             // 
             // dgvDatos
             // 
+            this.dgvDatos.BackgroundColor = System.Drawing.Color.White;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
@@ -182,15 +148,6 @@
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.Size = new System.Drawing.Size(490, 353);
             this.dgvDatos.TabIndex = 4;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 59);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Lista de Abonos";
             // 
             // Nombre
             // 
@@ -238,10 +195,55 @@
             this.Pagado.ReadOnly = true;
             this.Pagado.Width = 50;
             // 
+            // txtRecaudo
+            // 
+            this.txtRecaudo.Location = new System.Drawing.Point(224, 26);
+            this.txtRecaudo.Name = "txtRecaudo";
+            this.txtRecaudo.ReadOnly = true;
+            this.txtRecaudo.Size = new System.Drawing.Size(100, 20);
+            this.txtRecaudo.TabIndex = 3;
+            // 
+            // txtAbonos
+            // 
+            this.txtAbonos.Location = new System.Drawing.Point(58, 26);
+            this.txtAbonos.Name = "txtAbonos";
+            this.txtAbonos.ReadOnly = true;
+            this.txtAbonos.Size = new System.Drawing.Size(100, 20);
+            this.txtAbonos.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(164, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Recaudo:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Abonos:";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(502, 23);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Recuados por fecha";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmRecaudoPorFecha
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(527, 558);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox2);
